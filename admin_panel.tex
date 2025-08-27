@@ -1,0 +1,196 @@
+
+\chapter{Administration Panel} \label{chap:admin-panel}
+
+The \textsl{Administration Panel} offers a centralized interface to maintain the database, and manage user accounts and permissions. 
+
+The header menu presents the following options for the \admin user:
+
+\begin{itemize}
+	\item \textbf{\hyperref[chap:admin-homepage]{View Site}}: returns to the platform’s main page.
+	\item \textbf{\hyperref[chap:admin-change-password]{Change Password}}: allows the \admin to update their password.
+	\item \textbf{\hyperref[chap:admin-logout]{Log out}}: closes the current session.
+\end{itemize}
+
+\insertFigure[0.6]{admin/admin-panel-menu}{Administration menu.}
+
+
+% ------------------------------------------------------------------------------------------------------------------------------
+\section{Panel Overview} \label{sec:admin-panel-overview}
+% ------------------------------------------------------------------------------------------------------------------------------
+
+The administration panel is organized into two main sections.
+
+\textbf{Authentication and Authorization} section contains the \textsl{Groups} and \textsl{Users} categories, to manage user accounts, assign users to groups, and configure permissions.
+	
+\insertFigure{admin/overview-authentication}{Authentication and Authorization administration.}
+	
+\textbf{Database} section defines a category for each table of the \textsl{dwarfs4MOSAIC} platform, allowing to view, add, modify, or delete records as required.
+	
+\insertFigure{admin/overview-database}{Database administration.}
+	
+
+When selecting a category in the administration panel, a list of existing objects of that type is displayed, allowing you to view, edit, or delete them as needed.
+
+\insertFigure[0.7]{admin/list-instruments}{List of instruments.}
+
+%\section{Adding, Editing, and Deleting Objects}
+
+All categories in the Administration Panel follow the same basic workflow:
+
+\subsection*{Adding an object}
+
+Open the form to create a new object:
+
+\begin{itemize}
+	\item By clicking \texttt{Add+} next to the category name in the main panel.
+	\item By selecting a category and then clicking \texttt{Add [object name]+}.
+	\item By clicking \texttt{Save and add another} after creating an object, which immediately opens a new form for the same type of object.
+\end{itemize}
+
+\insertFigure[0.70]{admin/object-add}{Add a new object.}
+	
+Fill in the required fields and any optional fields as needed, and click \texttt{Save} to create the object. After saving, the new object will appear in the list of objects of that category, and you can edit it at any time to view it, update it or delete it if it is no longer needed. 
+
+\subsection*{Editing an object}
+
+Select a category and click on the object you wish to modify from the list. Update the fields as needed and click \texttt{Save} to apply the changes.
+
+
+\subsection*{Deleting an object}
+
+Select a category, click on the object from the list to open its form, and click \texttt{Delete}. You will be asked to confirm before the deletion is applied.
+
+It is also possible to delete multiple objects at once by selecting several entries in the list and choosing the \texttt{Delete selected} action from the dropdown menu.
+
+\insertFigure[0.60]{admin/objects-delete}{Delete existing object/s.}
+
+
+% ------------------------------------------------------------------------------------------------------------------------------
+\section{Database}
+% ------------------------------------------------------------------------------------------------------------------------------
+
+This section describes the database categories in an order that reflects the typical workflow for creating and linking objects. Presenting them in this sequence helps clarify the relationships between different types of entries and ensures a logical understanding of how data is organized within the platform.
+
+\subsection{Observatories}
+
+Observatories represent the locations where telescopes and instruments are installed. Each entry includes information such as the observatory name, location, website, geographical coordinates (latitude and longitude) and altitude.
+
+\insertFigure{admin/observatory-add}{Observatory information.}
+
+Maintaining accurate observatory data is essential, as telescopes and observing blocks are linked to these locations, and the relationships are used throughout the platform to manage observations efficiently.
+
+\subsection{Telescopes}
+
+Telescopes are the instruments installed at observatories to carry out astronomical observations. Each telescope entry includes its name, type, and the observatory where it is located. Additional details such as aperture size, focal length, and relevant notes can also be specified.
+
+\insertFigure{admin/telescope-add}{Telescope information.}
+
+
+Accurate telescope data is important because instruments, observing blocks, and targets are linked to specific telescopes. Ensuring these relationships are correctly established allows proper management and planning of observations across the platform.
+
+\subsection{Instruments}
+
+Instruments are the devices attached to telescopes used to acquire observational data, such as cameras, spectrographs, or photometers. Each instrument entry includes its name, type, and the telescope to which it is associated, along with optional descriptive notes.
+
+\addimage
+
+Correctly registering instruments ensures that observing blocks and targets are properly associated with the hardware used, which is essential for data management and planning of observations.
+
+
+\subsection{Observing Runs}
+
+Observing runs represent the periods of scheduled observations conducted at a given observatory with specific telescopes and instruments. Each observing run entry includes its name, the associated observatory, the telescope used, the start and end dates, and optional notes.
+
+\addimage
+
+Properly registering observing runs is crucial for organizing observing blocks, associating data files, and maintaining accurate records of the observations carried out.
+
+
+
+\subsection{Observing Blocks}
+
+Observing blocks are subdivisions of an observing run that define specific targets, instruments, and observation parameters for a given session. Each block includes a name, the observing run it belongs to, assigned targets, instruments, and any relevant notes.
+
+\addimage
+
+Proper configuration of observing blocks ensures that data files are correctly associated with their targets and runs, and that access permissions can be assigned effectively to researchers and groups.
+
+\subsection{Targets}
+
+Targets are the astronomical objects of study in the project. Each target has associated coordinates (right ascension and declination), apparent magnitude, redshift, angular size, visibility semester, and links to observing runs, instruments, and data files.
+
+\addimage
+
+Correct configuration of targets allows for accurate organization of observations, data management, and control of user access permissions for each object.
+
+
+% ------------------------------------------------------------------------------------------------------------------------------
+\section{Authentication and Authorization}
+% ------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{User/Researcher Management}
+
+Every member involved in the project is represented by two linked records: a \textbf{User} and a \textbf{Researcher}.
+
+The \textsl{User} account manages the basic login credentials and general access settings, such as password and group membership. The \textsl{Researcher} record extends this information by adding specific details about the person as a scientist, such as role, PhD status, and permissions to access observing blocks.
+
+When creating a new member, the process always begins with the \textsl{User} account. Once the account is saved, the corresponding \textsl{Researcher} information can be added and configured.
+
+
+\subsubsection{Creating a new user/researcher}
+
+%Creating a new \textsl{project member} is a three-step process.
+
+\underline{\textsl{Create account}}
+
+First, \textsl{add user} or \textsl{add researcher} from the corresponding category. In both cases, the \textsl{Add User} form will be opened. 
+
+In this initial form, you must enter the username for the new account and set a password. The password can be typed manually twice for confirmation, or it can be generated automatically by the system. If generated, the password will be displayed so that you can share it with the new user by email.
+
+\insertFigure{admin/user-add}{Creating a new user.}
+
+\underline{\textsl{Add user information}}
+
+After saving, you will be redirected to the user details page. In this second step, you can complete the personal information fields (first name, last name, and email), assign staff status if needed, and manage groups and permissions to control access to targets, blocks, and administrative features. To allow the user to access the platform, the \texttt{Staff status} option must be checked.
+
+\insertFigure{admin/user-permissions}{User permissions.}
+
+This page also displays additional information automatically managed by the system, such as the dates when the user account was created (\texttt{Date joined}) and the last time the user logged in (\texttt{Last login}).
+
+\insertFigure[0.60]{admin/user-dates}{User dates.}
+
+\underline{\textsl{Add researcher information}}
+
+Finally, the researcher information can be added either directly from the user page by clicking \texttt{Open Researcher}, or by selecting an existing researcher from the \textsl{Researchers} category. 
+
+In this form, you can complete all fields related to the researcher’s role, PhD status, and permissions for observing blocks. This ensures that the account is fully linked to its corresponding researcher profile and that all relevant access rights are properly assigned. 
+
+Use the Role field to assign \textsl{Core Team} or \textsl{Collaborator} status. Core Team members have full access to all targets and observing blocks, while Collaborators are restricted to the targets and blocks assigned to their group. The \textsl{Denied blocks} field specifies which observing blocks the researcher does not have permission to access.
+
+\insertFigure[0.60]{admin/researcher-role}{Researcher information.}
+
+From the researcher form, you can also access the corresponding user account by clicking on the username link, allowing you to view or edit the account information directly.
+
+
+\subsubsection{Deleting a user/researcher}
+
+When a user account is deleted, the login credentials are removed, but the researcher record remains in the database. This ensures that the researcher’s participation and history in past observing campaigns are preserved. However, once the associated user account is deleted, the researcher record becomes read-only and can no longer be edited. 
+
+\warning Conversely, if a researcher record is deleted, both the researcher and the linked user account are permanently removed.
+
+
+\subsection{Groups Management}
+
+Groups are used to organize users according to their roles and responsibilities within the project. By assigning users to a group, you can efficiently manage permissions and control access to targets, observing blocks, and administrative features.
+
+Creating a new \textsl{group} is a two-step process. First, \textsl{add group} and enter the group name. After saving, you will be redirected to the group details page. 
+
+In a second step, the Authorization section appears, where you can assign the group access to specific observing blocks. This specifies which observing blocks the users in the group are allowed to access or modify.
+
+\insertFigure{admin/group-allowed-blocks}{Group information.}
+
+Users can then be assigned to the group when creating or editing their accounts.
+
+
+
+

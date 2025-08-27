@@ -1,0 +1,205 @@
+% ---------------------------------------------------------------------------------------------------------------
+% UCM regulations: 11pt and margins
+
+\documentclass[11pt, a4paper]{report} % Minimum font size 11pt.
+
+\usepackage{graphicx} 					% Include images, tables
+\usepackage[english]{babel}	            % Handle languages
+\usepackage[utf8]{inputenc}	 			% Character encoding (to allow accents)
+\usepackage{vmargin} 					% Modify page margins
+\setmargins{2.5cm}{1.5cm}{16.5cm}{23.42cm}{10pt}{1cm}{0pt}{2cm}
+% left margin, top margin, text width, text height, header height, space between text and header,
+% footer height, space between text and footer
+
+% ---------------------------------------------------------------------------------------------------------------
+% Custom packages
+
+\usepackage{comment}          	% Comment blocks of text
+\usepackage{pdfpages}			% Include PDF pages
+\usepackage[T1]{fontenc}		% Select output encoding
+\usepackage{titlesec} 			% Customize sections
+\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{float}           	% H option for figure placement
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{chngcntr}
+\usepackage{xspace}
+\usepackage{hyperref}           % Must be loaded last
+\usepackage{fontawesome5}
+
+%\usepackage{indentfirst}
+
+% ----------------------------------------------------------------------------------------------------------------------
+% Commands
+\newcommand{\admin}{\textsl{Administrator}\xspace}
+\newcommand{\warning}{\textcolor{orange}{\faExclamationTriangle[solid]} \xspace}
+\newcommand{\addimage}{	\insertFigure[0.8]{image}{Add image} }
+
+% ----------------------------------------------------------------------------------------------------------------------
+% Customize sections
+
+% Part setup: ToC shows "Part I", page shows only title, chapters restart at 1
+\renewcommand{\thepart}{\Roman{part}}  % Part numbers in Roman numerals
+\renewcommand{\partname}{Part}          % Word "Part" used in ToC
+
+\makeatletter
+\def\@part[#1]#2{%
+	\refstepcounter{part}% increment the part counter
+	% Add only the title (#1) to the ToC, without "Part I"
+	\addcontentsline{toc}{part}{#1}%
+	\setcounter{chapter}{0}% reset chapter counter for each part
+	% Part page: only title, no "Part I" text
+	{\parindent \z@ \raggedright
+		\interlinepenalty\@M
+		\normalfont
+		\Huge \bfseries #2\par}%
+	\@endpart
+}
+\makeatother
+
+% Reset chapter counter for each part, but keep unique hyperref anchors
+\makeatletter
+\let\oldpart\part
+\renewcommand{\part}[1]{%
+	\oldpart{#1}%
+	\setcounter{chapter}{0}% reset chapter number
+}
+\renewcommand{\theHchapter}{\thepart.\arabic{chapter}} % unique anchors for hyperref
+\makeatother
+
+% Chapters
+\titleformat{\chapter}[hang]
+{\huge\bfseries}                % Title style
+%{}                             % No label ("Chapter")
+{\thechapter. }      			% Only chapter number
+%{\thechapter\hspace{1em}TOPIC}  % Chapter number followed by the word "TOPIC"
+{0pt}                           % Space between label and title
+{}								% Code before title (empty)
+
+% Title text formatting
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}  
+
+% Appendices
+\makeatletter
+\newcommand{\appendixtitleformat}{
+	\titleformat{\chapter}
+	{\normalfont\huge\bfseries}
+	{Appendix \thechapter}
+	{0em}
+	{. }
+}
+\makeatother
+
+% Footnote counter does not depend on the chapter
+\counterwithout{footnote}{chapter}
+
+% ----------------------------------------------------------------------------------------------------------------------
+% Change hyperlink style
+
+\definecolor{myblue}{RGB}{0, 20, 150}
+\hypersetup{
+	colorlinks=true,        % Activate colored text instead of boxes
+	linkcolor=myblue, 		    % Color of internal links (TOC, references, footnotes)
+	urlcolor=myblue,          % Color of external links (URLs)
+	citecolor=myblue, 	 	% Color of bibliographic citations
+	% If colorlinks=false:
+	% pdfborder={0 0 1},      % 1pt border around links
+	% linkbordercolor={0.7 0.7 0.7},
+	% urlbordercolor={0.7 0.7 0.7},
+}
+
+% ----------------------------------------------------------------------------------------------------------------------
+% Customize bullets for each level
+
+\renewcommand{\labelitemi}{\scriptsize$\bullet$}     % First level
+\renewcommand{\labelitemii}{\scriptsize$\circ$}      % Second level
+%\renewcommand{\labelitemiii}{$\diamond$}  % Third level
+
+% ----------------------------------------------------------------------------------------------------------------------
+% Figures
+\graphicspath{{img/}}
+\counterwithout{figure}{chapter} % Remove dependency on chapter
+
+\captionsetup{
+	font=footnotesize,        % Caption font size
+	labelfont={bf},           % Make name + number bold
+	labelsep=period,          % Separator "Fig. 1." instead of ":"
+	figurename=Fig            % Name of figures
+}
+
+% Number figures by Part, starting at 1 in each Part
+\renewcommand{\thefigure}{\thepart.\arabic{figure}}
+
+\usepackage{etoolbox}  % for \pretocmd
+\pretocmd{\part}{\setcounter{figure}{0}}{}{}
+
+% ----------------------------------------------------------------------------------------------------------------------
+% Custom colors
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+
+\definecolor{darklavender}{rgb}{0.35, 0.15, 0.5}
+\newcommand{\darklavender}[1]{\textcolor{darklavender}{#1}}
+
+\definecolor{darkred}{rgb}{0.8, 0.0, 0.0}
+\newcommand{\darkred}[1]{\textcolor{darkred}{#1}}
+
+\definecolor{orange}{rgb}{0.8, 0.4, 0.0}
+\newcommand{\orange}[1]{\textcolor{orange}{#1}}
+
+\definecolor{darkgreen}{rgb}{0.0, 0.39, 0.0}
+\newcommand{\darkgreen}[1]{\textcolor{darkgreen}{#1}}
+
+% ----------------------------------------------------------------------------------------------------------------------
+% Insert an image with specific width
+
+\newcommand{\insertFigure}[3][1]{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=#1\linewidth]{img/#2}
+		\caption{#3}
+	\end{figure}
+}
+
+
+
+\begin{comment}
+	
+	\usepackage{amsmath, amssymb} 	% Mathematical symbols
+	
+	\usepackage{multirow}
+	\usepackage{array}
+	
+	\usepackage{tcolorbox}
+	
+	\usepackage{xparse}
+	\usepackage{ifthen}
+	\tcbuselibrary{breakable} % Load library to allow page breaks
+	\usepackage{cancel}
+	\usepackage[table]{xcolor} % Load xcolor with table option
+	
+	% ----------------------------------------------------------------------------------------------------------------------
+	% Customize tables
+	
+	\renewcommand{\arraystretch}{1.5}  % Increase row height
+	
+
+	
+	\newcommand{\red}[1]{\textcolor{red}{#1}}
+	
+	\newcommand{\bolddarkred}[1]{\textbf{\darkred{#1}}}
+	\newcommand{\bolddarkgreen}[1]{\textbf{\darkgreen{#1}}}
+	\newcommand{\boldblue}[1]{\textbf{\blue{#1}}}
+	
+	\definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
+	\newcommand{\darkblue}[1]{\textcolor{darkblue}{#1}}
+	\newcommand{\bolddarkblue}[1]{\textbf{\darkblue{#1}}}
+	
+	\definecolor{lavender}{rgb}{0.9, 0.8, 1.0}
+	\definecolor{lightlavender}{rgb}{0.96, 0.92, 1.0}
+	
+\end{comment}
