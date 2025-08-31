@@ -1,15 +1,15 @@
 
-\part{\textsl{Users's} guide} \label{part:user}
+\part{\textsl{User's} Guide} \label{part:user}
 
     
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Accessing the Platform} \label{chap:user-access}
 
-To start using \project, open your preferred web browser and navigate to the project URL, \url{http://halmax.fis.ucm.es/}. It is recommended to use modern browsers such as Chrome, Firefox, or Edge for optimal compatibility. Once the page loads, you will reach the welcome page. 
+To start using \project, open your preferred web browser and navigate to the project URL, \url{http://halmax.fis.ucm.es/}. It is recommended to use modern browsers such as \textsl{Chrome}, \textsl{Firefox}, or \textsl{Edge} for optimal compatibility with all platform features. Once the page loads, you will reach the welcome page. 
 
 \insertFigure[0.8]{welcome}{Dwarfs4MOSAIC welcome page.}
 
-Click the \texttt{LOGIN} option located at the top-right corner of the page to access the login form. Then enter your assigned username and password in the corresponding fields. If you forget your password or experience login issues, \href{mailto:\prjMail}{contact the project coordinator} to request a new password.
+Click the \texttt{LOGIN} option at the top-right corner of the page to access the login form and enter your assigned username and password in the corresponding fields. If you forget your password or experience login issues, contact the project coordinator at \href{mailto:\prjMail}{\prjMail} to request a new password.
 
 \insertFigure[0.5]{login}{Login form.}
 
@@ -17,9 +17,11 @@ Click the \texttt{LOGIN} option located at the top-right corner of the page to a
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Navigating the Home Page} \label{chap:user-homepage}
 
-After logging in, you will be directed to the \textsl{Home} page, which displays all the targets you are authorized to access, depending on your user permission: \textsl{Core Team} members have full access to all entries, while \textsl{Collaborators} can only view the targets and blocks assigned to their group, with any restricted or denied blocks and associated data files remaining hidden.
+After logging in, you will be directed to the \textsl{Home} page, which shows a welcome message with your name and displays a table with the targets you have permission to view.
 
-\addimage
+%, depending on your user rol: \textsl{Core Team} members have full access to all entries, while \textsl{Collaborators} can only view the targets and blocks assigned to their group, with any restricted or denied blocks and associated data files remaining hidden.
+
+\insertFigure{homepage}{Home page.}
 
 Each target is displayed with several fields that provide key information at a glance:
 
@@ -32,7 +34,7 @@ Each target is displayed with several fields that provide key information at a g
 	\item \textbf{Apparent Magnitude}: brightness of the target as observed from Earth.
 	\item \textbf{Redshift (z)}: measured redshift of the object.
 	\item \textbf{Angular Size}: apparent size of the target in the sky.
-	\item \textbf{Visibility Semester}: observing semester when the target was observed.
+	\item \textbf{Visibility Semester}: observing semester when the target is visible.
 	\item \textbf{Observing Run}: name of the observing run(s) the target belongs to.
 	\item \textbf{Instrument}: instrument used to acquire data for the target.
 	\item \textbf{Data Files}: list of associated files available for download.
@@ -43,18 +45,18 @@ Each target is displayed with several fields that provide key information at a g
 
 
 % --------------------------------------------------------------------------------------------------------------------------
-\chapter{Downloading Files} \label{chap:user-download-files}
+\chapter{Downloading Files} \label{chap:user-download-files} 
    	
-  	On the \textsl{Home} page, locate the target of interest. In the \texttt{Data Files} column, you will see the available files along with a download icon. Clicking this icon opens the file download view.
+On the \textsl{Home} page, locate the target of interest. In the \texttt{Data Files} column, you will see the available files along with the download icon {\scriptsize \grayblue{\faDownload{}}}. Clicking this icon opens the file download view.
 
-\addimage
+\insertFigure[0.6]{download}{File download view.}
 
 In this view, a table lists all files associated with the selected target. You can select one, multiple, or all files at once. If only a single file is selected, it will be downloaded directly. If multiple files are selected, a .zip archive containing all selected files is generated. The download process is handled directly by your web browser.
 
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Logging Out} \label{chap:user-logout}
 
-To securely exit the platform, click the \texttt{LOG OUT} option located in the header at the top-right corner of the page. This will end your session and return you to the welcome page. Your session will also automatically expire after 15 minutes of inactivity, requiring you to log in again. 
+To securely exit the platform, click the \texttt{LOG OUT} option located at the top-right corner of the page. This will end your session and return you to the welcome page. Your session will also automatically expire after 15 minutes of inactivity, requiring you to log in again. This helps protect your account on shared computers.
 
 Always log out when you finish using the system, especially on shared or public computers, to protect your account and data.
 

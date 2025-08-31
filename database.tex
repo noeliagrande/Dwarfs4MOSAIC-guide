@@ -1,85 +1,89 @@
 
 \chapter{Database Visualization} \label{chap:admin-database}
 
-This section provides access to the contents of the project’s database tables. Through the visualization interface, users can browse the records stored in each category. The purpose of this feature is to facilitate exploration of the stored information, enabling the \admin to quickly consult details, verify associations between objects, and ensure that the database structure reflects the ongoing work of the project.
+This section introduces the interface for browsing the project’s database tables. It allows the \admin to explore the stored records, consult details quickly, and verify relationships between different objects. The feature ensures that the database content remains consistent with the project’s current state.
 
 \insertFigure[0.9]{database/database-overview}{Database tables interface.}
 
-The list of categories appears in alphabetical order; however, in the following sections they will be presented according to their logical order of creation, so that relationships between objects can be more clearly understood.
+The list of categories appears in alphabetical order; however, in the following sections, they are presented according to the order in which they are created, making it easier to understand the relationships between objects.
 
-\subsection{Groups}
+\section{Groups}
 
-The \textsl{group} table defines the different groups of project members used to organize roles and manage permissions collectively. Each entry corresponds to a group created in the administration panel, containing its name and the associated authorization settings. Groups are particularly useful for granting access to observing blocks in a unified way, so that permissions do not need to be configured individually for every researcher.
+The \textsl{group} table contains information about the project groups used to organize members. 
 
-\insertFigure[0.7]{database/database-groups}{\textsl{Groups} table.}
+Each record represents a single group and shows its name, members (researchers) and authorized observing blocks for the researchers belonging to the group.
 
-\subsection{Researchers}
+\insertFigure[0.55]{database/groups}{\textsl{Groups} table.}
 
-The \textsl{researcher} table stores information specific to each project member that goes beyond the basic user account. Each entry is linked one-to-one with a record in the \textsl{user} table, ensuring that login credentials and researcher details remain connected.
+\section{Researchers}
 
-This table contains fields related to the researcher’s role in the project (Core Team or Collaborator), PhD status, and permissions for accessing observing blocks. By managing this information separately from the user account, the system allows user credentials to be deleted while preserving the researcher’s record, thereby maintaining the history of participation in past observing campaigns.
+The \textsl{researcher} table contains information about the project members. 
 
-\insertFigure{database/database-researchers}{\textsl{Researchers} table.}
+Each record represents a single researcher and shows its full name, role (\textsl{Core Team} or \textsl{Collaborator}), the group it belongs to, whether it holds a PhD, affiliated institution, the observing runs it has participated in, specific denied observation blocks, email address and comments.
 
-\subsection{Observatories}
+\insertFigure{database/researchers}{\textsl{Researchers} table.}
 
-The \textsl{observatory} table stores the information of the observatories associated with the project. Each record represents one observatory and includes its name, geographical location (longitude and latitude, stored in separate fields), altitude, and optional descriptive details.
+\section{Observatories}
 
-Observatories act as the root element in the database structure, since telescopes are always linked to a specific observatory. Defining observatories first ensures that subsequent records, such as telescopes, instruments, and observing runs, can be properly associated with their physical location.
+The \textsl{observatory} table contains information about the observatories associated with the project. 
+
+Each record represents a single observatory and shows its name, location, geographic longitude, geographic latitude, altitude above sea level and a link to a website with additional information. 
 
 \insertFigure[0.9]{database/database-observatories}{\textsl{Observatories} table.}
 
-By clicking on the name of an observatory in the list view, a detailed page is displayed showing all the specific information related to that observatory.
+Clicking on an observatory name in the list a detailed page opens displaying all telescopes related to that observatory.
 
 \insertFigure{database/database-observatory}{Specific observatory information.}
 
-\subsection{Telescopes}
+\section{Telescopes}
 
-The \textsl{telescope} table stores information about the specific telescopes associated with each observatory. Every telescope record is linked to one observatory, ensuring that its location is always clearly defined. The fields typically include the telescope name, aperture size, and optional descriptive information.
+The \textsl{telescope} table contains information about the telescopes associated with each observatory. 
 
-Telescopes serve as an intermediate element in the database hierarchy: they belong to observatories and, in turn, have one or more instruments attached to them. This structure guarantees that all observing runs and blocks can be properly traced back to the physical telescope used.
+Each record represents a single telescope and shows its name, description, observatory to which it belongs, institutional owner, operational status (Unknown, Operational, Inoperative, or Under Maintenance), aperture and a link to a website with additional information. 
 
 \insertFigure{database/database-telescopes}{\textsl{Telescopes} table.}
 
-By clicking on the name of a telescope in the list view, a detailed page opens showing its specific information.
+Clicking on a telescope name in the list a detailed page opens showing all instruments related to that telescope.
 
-\insertFigure[0.8]{database/database-telescope}{Specific telescope information.}
+\insertFigure[0.7]{database/database-telescope}{Specific telescope information.}
+
+\section{Instruments}
+
+The \textsl{instrument} table contains information about the instruments available for each telescope. 
+
+Each record represents a single instrument and shows its name, description, telescope on which it is installed, operational status (Unknown, Operational, Inoperative, or Under Maintenance) and a link to a website with additional information. 
+
+\insertFigure[0.90]{database/database-instruments}{\textsl{Instruments} table.}
 
 
-\subsection{Instruments}
+\section{Observing Runs}
 
-The \textsl{instrument} table contains the instruments available for each telescope. Each instrument is linked to a specific telescope, ensuring that its use is always associated with the correct observational setup. Typical fields include the instrument name, type, and a short description of its characteristics.
+The \textsl{observing\_run} table contains information about the periods during which observations are scheduled for each instrument. 
 
-Instruments represent the final physical element in the observational chain: they are attached to telescopes, which in turn belong to observatories. Observing runs and blocks are always tied to a specific instrument, making this link essential for tracing how and with which configuration each dataset was obtained.
+Each record represents a single observing run and shows its name, instrument used, description, start and end dates, and comments.
 
-\insertFigure{database/database-instruments}{\textsl{Instruments} table.}
+\insertFigure{database/runs}{\textsl{Observing Runs} table.}
+
+Clicking on an observing run name in the list a detailed page opens showing all researchers involved in the observing run as well as all the observing blocks included.
+
+\insertFigure{database/run}{Specific observing run information.}
+
+\section{Observing Blocks}
+
+The \textsl{observing\_block} table contains information about the specific set of scheduled observations for each observing run. 
+
+Each record represents a single observing block and shows its name, observation run to which it belongs, description, start date and time, end time, observed objects (targets), observation mode (Photometry, Spectroscopy, or Imaging), filters, exposure time of the observation, seeing value, weather conditions,  and comments.
+
+\insertFigure{database/blocks}{\textsl{Observing Blocks} table.}
+
+%\red{By clicking on the name of an observing block in the list view, you can access a detailed page displaying its configuration, associated targets, and permissions.}
+
+\section{Targets}
+
+The \textsl{target} table contains information about the observable astronomical objects. 
+
+Each record represents a single target and shows its image (if available), name, observing blocks where it has been observed, type (\textsl{Galaxy}, \textsl{Calibration}, or \textsl{Other}), right ascension, declination, apparent magnitude, redshift, angular size, visibility semester, comments, and path to store associated files.
 
 
-\subsection{Observings Runs}
-
-The \textsl{observing\_run} table stores the periods of time during which observations are scheduled at a given observatory with a specific telescope and instrument. Each observing run is therefore linked to an instrument and inherits its association with a telescope and observatory.
-
-The main fields include the run name or code, start and end dates, and additional information describing the scope of the run. Observing runs act as a container for multiple observing blocks, which represent the individual units of scheduled observations.
-
-\insertFigure[0.9]{database/database-observing-runs}{\textsl{Observing Runs} table.}
-
-By clicking on the name of an observing run in the list view, you can access a detailed page showing its configuration and all associated observing blocks.
-
-\subsection{Observing Blocks}
-
-The \textsl{observing\_block} table defines the fundamental scheduling units within an observing run. Each block corresponds to a specific target or set of targets to be observed, and it is always linked to an observing run, thereby inheriting its telescope, instrument, and observatory.
-
-The main fields include the block name or identifier, its temporal allocation (start and end time), and the associated target(s). Additional information, such as constraints or priority, may also be recorded. Observing blocks provide the framework for assigning researchers and managing permissions, determining who has access to view or contribute to the block.
-
-\insertFigure[0.9]{database/database-observing-runs}{\textsl{Observing Blocks} table.}
-
-By clicking on the name of an observing block in the list view, you can access a detailed page displaying its configuration, associated targets, and permissions.
-
-\subsection{Targets}
-
-The \textsl{target} table contains all astronomical objects included in the project. Each target is linked to an observatory, telescope, instrument, and observing block, providing a complete context for data acquisition.
-
-The main fields include the target name or identifier, type, coordinates (right ascension and declination), apparent magnitude, redshift, angular size, and visibility semester. Additional information such as associated images, observing runs, instruments, and data files is also available.
-
-\insertFigure{database/database-targets}{\textsl{Targets} table.}
+\insertFigure{database/targets}{\textsl{Targets} table.}
 

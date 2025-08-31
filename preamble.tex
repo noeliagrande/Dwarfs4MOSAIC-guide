@@ -1,3 +1,4 @@
+
 % ---------------------------------------------------------------------------------------------------------------
 % UCM regulations: 11pt and margins
 
@@ -32,9 +33,11 @@
 
 % ----------------------------------------------------------------------------------------------------------------------
 % Commands
-\newcommand{\admin}{\textsl{Administrator}\xspace}
+\newcommand{\admin}{\textsf{Administrator}\xspace}
 \newcommand{\warning}{\textcolor{orange}{\faExclamationTriangle[solid]} \xspace}
-\newcommand{\addimage}{	\insertFigure[0.8]{image}{Add image} }
+
+\newcommand{\docref}[2]{\textsl{\hyperref[#2]{#1~\ref*{#2}.~\nameref*{#2}}}}
+\newcommand{\userpart}{\textsl{\hyperref[part:user]{Part~\ref*{part:user}. User's Guide}} \xspace}
 
 % ----------------------------------------------------------------------------------------------------------------------
 % Customize sections
@@ -140,6 +143,10 @@
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+\definecolor{grayblue}{rgb}{0.255, 0.463, 0.565}
+\newcommand{\grayblue}[1]{\textcolor{grayblue}{#1}}
+
 \newcommand{\gray}[1]{\textcolor{gray}{#1}}
 
 \definecolor{darklavender}{rgb}{0.35, 0.15, 0.5}

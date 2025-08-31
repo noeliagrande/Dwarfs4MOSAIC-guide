@@ -6,12 +6,12 @@ The \textsl{Administration Panel} offers a centralized interface to maintain the
 The header menu presents the following options for the \admin user:
 
 \begin{itemize}
-	\item \textbf{\hyperref[chap:admin-homepage]{View Site}}: returns to the platform’s main page.
-	\item \textbf{\hyperref[chap:admin-change-password]{Change Password}}: allows the \admin to update their password.
-	\item \textbf{\hyperref[chap:admin-logout]{Log out}}: closes the current session.
+	\item \textbf{View Site}: returns to the platform’s main page (see \docref{Chapter}{chap:admin-homepage}).
+	\item \textbf{Change Password}: allows the \admin to update their password.
+	\item \textbf{Log out}: closes the current session (see \docref{Chapter}{chap:admin-logout}).
 \end{itemize}
 
-\insertFigure[0.6]{admin/admin-panel-menu}{Administration menu.}
+\insertFigure[0.6]{admin/menu-admin-panel}{Administration's panel menu options.}
 
 
 % ------------------------------------------------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ Open the form to create a new object:
 	\item By clicking \texttt{Save and add another} after creating an object, which immediately opens a new form for the same type of object.
 \end{itemize}
 
-\insertFigure[0.70]{admin/object-add}{Add a new object.}
+\insertFigure[0.70]{admin/add-object}{Add a new object.}
 	
 Fill in the required fields and any optional fields as needed, and click \texttt{Save} to create the object. After saving, the new object will appear in the list of objects of that category, and you can edit it at any time to view it, update it or delete it if it is no longer needed. 
 
@@ -75,7 +75,7 @@ This section describes the database categories in an order that reflects the typ
 
 Observatories represent the locations where telescopes and instruments are installed. Each entry includes information such as the observatory name, location, website, geographical coordinates (latitude and longitude) and altitude.
 
-\insertFigure{admin/observatory-add}{Observatory information.}
+\insertFigure{admin/add-observatory}{Observatory information.}
 
 Maintaining accurate observatory data is essential, as telescopes and observing blocks are linked to these locations, and the relationships are used throughout the platform to manage observations efficiently.
 
@@ -83,7 +83,7 @@ Maintaining accurate observatory data is essential, as telescopes and observing 
 
 Telescopes are the instruments installed at observatories to carry out astronomical observations. Each telescope entry includes its name, type, and the observatory where it is located. Additional details such as aperture size, focal length, and relevant notes can also be specified.
 
-\insertFigure{admin/telescope-add}{Telescope information.}
+\insertFigure{admin/add-telescope}{Telescope information.}
 
 
 Accurate telescope data is important because instruments, observing blocks, and targets are linked to specific telescopes. Ensuring these relationships are correctly established allows proper management and planning of observations across the platform.
@@ -92,7 +92,7 @@ Accurate telescope data is important because instruments, observing blocks, and 
 
 Instruments are the devices attached to telescopes used to acquire observational data, such as cameras, spectrographs, or photometers. Each instrument entry includes its name, type, and the telescope to which it is associated, along with optional descriptive notes.
 
-\addimage
+\insertFigure{admin/add-instrument}{Instrument information.}
 
 Correctly registering instruments ensures that observing blocks and targets are properly associated with the hardware used, which is essential for data management and planning of observations.
 
@@ -101,7 +101,8 @@ Correctly registering instruments ensures that observing blocks and targets are 
 
 Observing runs represent the periods of scheduled observations conducted at a given observatory with specific telescopes and instruments. Each observing run entry includes its name, the associated observatory, the telescope used, the start and end dates, and optional notes.
 
-\addimage
+\insertFigure{admin/add-run1}{Observing run information.}
+\insertFigure{admin/add-run2}{Observing run participants.}
 
 Properly registering observing runs is crucial for organizing observing blocks, associating data files, and maintaining accurate records of the observations carried out.
 
@@ -111,7 +112,8 @@ Properly registering observing runs is crucial for organizing observing blocks, 
 
 Observing blocks are subdivisions of an observing run that define specific targets, instruments, and observation parameters for a given session. Each block includes a name, the observing run it belongs to, assigned targets, instruments, and any relevant notes.
 
-\addimage
+\insertFigure{admin/add-block1}{Observing block information.}
+\insertFigure{admin/add-block2}{Observing block targets.}
 
 Proper configuration of observing blocks ensures that data files are correctly associated with their targets and runs, and that access permissions can be assigned effectively to researchers and groups.
 
@@ -119,7 +121,7 @@ Proper configuration of observing blocks ensures that data files are correctly a
 
 Targets are the astronomical objects of study in the project. Each target has associated coordinates (right ascension and declination), apparent magnitude, redshift, angular size, visibility semester, and links to observing runs, instruments, and data files.
 
-\addimage
+\insertFigure{admin/add-target}{Target information.}
 
 Correct configuration of targets allows for accurate organization of observations, data management, and control of user access permissions for each object.
 
@@ -147,7 +149,7 @@ First, \textsl{add user} or \textsl{add researcher} from the corresponding categ
 
 In this initial form, you must enter the username for the new account and set a password. The password can be typed manually twice for confirmation, or it can be generated automatically by the system. If generated, the password will be displayed so that you can share it with the new user by email.
 
-\insertFigure{admin/user-add}{Creating a new user.}
+\insertFigure{admin/add-user}{Creating a new user.}
 
 \underline{\textsl{Add user information}}
 
@@ -185,9 +187,11 @@ Groups are used to organize users according to their roles and responsibilities 
 
 Creating a new \textsl{group} is a two-step process. First, \textsl{add group} and enter the group name. After saving, you will be redirected to the group details page. 
 
+\insertFigure[0.70]{admin/add-group}{Group information.}
+
 In a second step, the Authorization section appears, where you can assign the group access to specific observing blocks. This specifies which observing blocks the users in the group are allowed to access or modify.
 
-\insertFigure{admin/group-allowed-blocks}{Group information.}
+\insertFigure{admin/add-group-blocks}{Group allowed blocks.}
 
 Users can then be assigned to the group when creating or editing their accounts.
 
