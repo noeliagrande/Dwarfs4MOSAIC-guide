@@ -5,12 +5,13 @@
 % Project info
 
 \newcommand{\project}{\textsf{Dwarfs4MOSAIC}\xspace}
-\newcommand{\prjInstitution}{Universidad Complutense de Madrid}
-\newcommand{\prjAuthor}{Noelia Grande Zafrilla}
-\newcommand{\prjPubDate}{August, 2025} % \newcommand{\prjPubDate}{\today}
-\newcommand{\prjVersion}{1.0}
-\newcommand{\prjContact}{Principal Investigator of Dwarfs4MOSAIC (Jesús Gallego Maestro)}
-\newcommand{\prjMail}{j.gallego@ucm.es}
+\newcommand{\prjInstitution}{Universidad Complutense de Madrid\xspace}
+\newcommand{\prjAuthor}{Noelia Grande Zafrilla\xspace}
+\newcommand{\prjPubDate}{August, 2025\xspace} % \newcommand{\prjPubDate}{\today}
+\newcommand{\prjVersion}{1.0\xspace}
+%\newcommand{\prjContact}{Principal Investigator of Dwarfs4MOSAIC (Jesús Gallego Maestro)\xspace}
+%\newcommand{\prjMail}{j.gallego@ucm.es\xspace}
+\newcommand{\prjUrl}{\url{https://guaix.ucm.es/dwarfs4mosaic}\xspace}
 
 
 \begin{document}
@@ -26,19 +27,14 @@
 	
 	\section*{About this guide}
 	
-	\correcciones{
-	
-	en vez de mail de contacto, redirigir a la web de guaix: buscar el contact mail en la url... y escirbir a quien aparezca momo contacto
-	}
-	
 	\begin{flushleft}
 		\begin{tabular}{ll}
 			\textbf{Institution:} & \prjInstitution \\
 			\textbf{Author:} & \prjAuthor \\
 			\textbf{Publication date:} & \prjPubDate \\
 			\textbf{Version:} & 1.0 \\
-			\textbf{Contact:} & \prjContact \\
-			& Email: \href{mailto:\prjMail}{\prjMail}
+			\textbf{Contact:} & \prjUrl \\
+			%& Email: \href{mailto:\prjMail}{\prjMail}
 		\end{tabular}
 	\end{flushleft}
 	
@@ -46,10 +42,11 @@
 	
 	\section*{Intended Audience}
 	
-	\hyperref[part:user]{Part~\ref*{part:user}} of the guide is designed for researchers and users without administrative privileges. It explains how to navigate and use the \project platform as a non-administrative user, providing step-by-step instructions.
+	\hyperref[part:user]{Part~\ref*{part:user}} of the guide is designed for researchers and users without administrative privileges. It explains how to navigate and use the \app platform as a non-administrative user, providing step-by-step instructions.
 	
 	\hyperref[part:admin]{Part~\ref*{part:admin}} is intended for the \admin user, with administrative privileges, and describes exclusively the platform’s administrative functionalities, with step-by-step guidance.
 	 
+	\newpage
 	
     % Index
     \setlength{\parskip}{0.3em}
@@ -61,10 +58,12 @@
     \setcounter{page}{1}    % resets the visible page number
     \pagestyle{plain}       % sets normal page style
     
+    \newpage
+    
     % Researcher's guide
     \include{part_user}
     
-     % Administrator's guide
+    % Administrator's guide
     \include{part_admin}
    
 

@@ -33,6 +33,7 @@
 
 % ----------------------------------------------------------------------------------------------------------------------
 % Commands
+\newcommand{\app}{\textsf{dwarfs4MOSAIC repository}\xspace}
 \newcommand{\admin}{\textsf{Administrator}\xspace}
 \newcommand{\warning}{\textcolor{orange}{\faExclamationTriangle[solid]} \xspace}
 
@@ -84,6 +85,14 @@
 
 % Title text formatting
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}  
+
+% No pagebreak for chapters
+%\usepackage{etoolbox}
+%\makeatletter
+%\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+%\makeatother
+
+
 
 % Appendices
 \makeatletter
