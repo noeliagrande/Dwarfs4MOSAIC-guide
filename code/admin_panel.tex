@@ -1,7 +1,7 @@
 
 \chapter{Administration Panel} \label{chap:admin-panel}
 
-The \textsl{Administration Panel} offers a centralized interface to maintain the database, and manage user accounts and permissions. 
+The \textsl{administration panel} offers a centralized interface to maintain the database, and manage user accounts and permissions. 
 
 The header menu presents the following options for the \admin user:
 
@@ -22,20 +22,34 @@ The administration panel is organized into two main sections.
 
 \textbf{Authentication and Authorization} section contains the \textsl{Groups} and \textsl{Users} categories, to manage user accounts, assign users to groups, and configure permissions.
 	
-\insertFigure{admin/overview-authentication}{Authentication and Authorization administration.}
+\insertFigure[0.8]{admin/overview-authentication}{Authentication and Authorization administration.}
 	
+\newpage
+
 \textbf{Database} section defines a category for each table of the \textsl{dwarfs4MOSAIC} platform, allowing to view, add, modify, or delete records as required.
 	
-\insertFigure{admin/overview-database}{Database administration.}
+\insertFigure[0.75]{admin/overview-database}{Database administration.}
 	
 
 When selecting a category in the administration panel, a list of existing objects of that type is displayed, allowing you to view, edit, or delete them as needed.
 
-\insertFigure[0.7]{admin/list-instruments}{List of instruments.}
+\insertFigure[0.50]{admin/list-instruments}{List of instruments.}
 
 %\section{Adding, Editing, and Deleting Objects}
 
-All categories in the Administration Panel follow the same basic workflow:
+All categories in the administration panel have the same basic actions.
+
+\subsection*{Importing a set of objects}
+
+For each category, an \textsl{Import CSV} button is available. 
+
+\insertFigure[0.20]{admin/import-button}{Import CSV button.}
+
+Clicking this button opens a dedicated view to import objects of the selected category. The \texttt{Select File} button opens a file browser to choose a CSV file to import. This file must include all fields corresponding to the category and contain a header row with the database column names.
+
+\insertFigure[0.80]{admin/import-csv}{Import CSV view.}
+
+\warning The CSV is imported as-is, without any data validation. Object IDs in the CSV are not preserved; the platform automatically assigns new IDs upon import. After importing, you must manually update the objects to establish their relationships with other tables, and upload any associated files separately.
 
 \subsection*{Adding an object}
 
@@ -49,7 +63,7 @@ Open the form to create a new object:
 
 \insertFigure[0.70]{admin/add-object}{Add a new object.}
 	
-Fill in the required fields and any optional fields as needed, and click \texttt{Save} to create the object. After saving, the new object will appear in the list of objects of that category, and you can edit it at any time to view it, update it or delete it if it is no longer needed. 
+Fill in the required fields (shown in bold) and any optional fields as needed, and click \texttt{Save} to create the object. After saving, the new object will appear in the list of objects of that category, and you can edit it at any time to view it, update it or delete it if it is no longer needed. 
 
 \subsection*{Editing an object}
 
@@ -62,66 +76,268 @@ Select a category, click on the object from the list to open its form, and click
 
 It is also possible to delete multiple objects at once by selecting several entries in the list and choosing the \texttt{Delete selected} action from the dropdown menu.
 
-\insertFigure[0.60]{admin/objects-delete}{Delete existing object/s.}
+\insertFigure[0.50]{admin/objects-delete}{Delete existing object/s.}
 
 
 % ------------------------------------------------------------------------------------------------------------------------------
 \section{Database}
 % ------------------------------------------------------------------------------------------------------------------------------
 
-This section describes the database categories in an order that reflects the typical workflow for creating and linking objects. Presenting them in this sequence helps clarify the relationships between different types of entries and ensures a logical understanding of how data is organized within the platform.
+This section describes the database categories in an order that reflects the typical workflow for creating and linking objects (see \textsl{\autoref{fig:database} \nameref{fig:database}}). Presenting them in this sequence helps clarify the relationships between different types of entries and ensures a logical understanding of how data is organized within the platform.
 
 \subsection{Observatories}
 
-Observatories represent the locations where telescopes and instruments are installed. Each entry includes information such as the observatory name, location, website, geographical coordinates (latitude and longitude) and altitude.
+Observatories represent the locations where telescopes and instruments are installed. 
 
-\insertFigure{admin/add-observatory}{Observatory information.}
+To register a new observatory, click \textsl{Add Observatory} and provide the required information in the following fields:
+
+\newpage
+
+\begin{description}
+	\item[Name:] name of the observatory.
+\end{description}
+
+\insertFigure[0.5]{admin/add-observatory-1}{Observatory name.}
+
+\underline{General Information}
+
+\begin{description}
+	\item[Location:] city, region or country where the observatory is located.
+	\item[Website:] official website of the observatory (if available).
+\end{description}
+
+\insertFigure[0.8]{admin/add-observatory-2}{Observatory general information.}
+
+\underline{Coordinates}
+
+\begin{description}
+	\item[Longitude:] geographical longitude of the observatory, expressed in degrees, minutes, seconds (may include decimal values) and the direction (East (\texttt{E}) or West (\texttt{W})).
+	\item[Latitude:] geographical latitude of the observatory, expressed in degrees, minutes, seconds (may include decimal values) and the direction (North (\texttt{N}) or South (\texttt{S})).
+	\item[Altitude:] geographical height above sea level, expressed in meters.
+\end{description}
+
+\insertFigure[0.45]{admin/add-observatory-3}{Observatory coordinates.}
 
 Maintaining accurate observatory data is essential, as telescopes and observing blocks are linked to these locations, and the relationships are used throughout the platform to manage observations efficiently.
 
 \subsection{Telescopes}
 
-Telescopes are the instruments installed at observatories to carry out astronomical observations. Each telescope entry includes its name, type, and the observatory where it is located. Additional details such as aperture size, focal length, and relevant notes can also be specified.
+Telescopes are the instruments installed at observatories to carry out astronomical observations. 
 
-\insertFigure{admin/add-telescope}{Telescope information.}
+To register a new telescope, click \textsl{Add Telescope} and provide the required information in the following fields:
 
+\begin{description}
+	\item[Name:] name of the telescope.
+\end{description}
+
+\insertFigure[0.5]{admin/add-telescope-1}{Telescope name.}
+
+\underline{General Information}
+
+\begin{description}
+	\item[Description:] short description of the telescope.
+	\item[Institutional Owner:] institutional owner of the telescope.
+	\item[Observatory:] observatory where the telescope is located.
+	\item[Website:] official website of the telescope (if available).
+	\item[Status:] current operational status of the telescope (\textsl{Unknown}, \textsl{Operational}, \textsl{Inoperative}, \textsl{Under Maintenance}).
+\end{description}
+
+\insertFigure[0.8]{admin/add-telescope-2}{Telescope general information.}
+
+\underline{Characteristics}
+
+\begin{description}
+	\item[Aperture:] aperture of the telescope, expressed in meters.
+\end{description}
+
+\insertFigure[0.4]{admin/add-telescope-3}{Telescope coordinates.}
 
 Accurate telescope data is important because instruments, observing blocks, and targets are linked to specific telescopes. Ensuring these relationships are correctly established allows proper management and planning of observations across the platform.
 
 \subsection{Instruments}
 
-Instruments are the devices attached to telescopes used to acquire observational data, such as cameras, spectrographs, or photometers. Each instrument entry includes its name, type, and the telescope to which it is associated, along with optional descriptive notes.
+Instruments are the devices attached to telescopes used to acquire observational data, such as cameras, spectrographs, or photometers. 
 
-\insertFigure{admin/add-instrument}{Instrument information.}
+To register a new instrument, click \textsl{Add Instrument} and provide the required information in the following fields:
+
+\begin{description}
+	\item[Name:] name of the instrument.
+\end{description}
+
+\insertFigure[0.5]{admin/add-instrument-1}{Instrument name.}
+
+\underline{General Information}
+
+\begin{description}
+	\item[Description:] short description of the instrument.
+	\item[Telescope:] telescope where the instrument is installed.
+	\item[Website:] official website of the instrument (if available).
+	\item[Status:] current operational status of the instrument (\textsl{Unknown}, \textsl{Operational}, \textsl{Inoperative}, \textsl{Under Maintenance}).
+\end{description}
+
+\insertFigure[0.9]{admin/add-instrument-2}{Instrument general information.}
+
+\underline{Additional Data}
+
+\begin{description}
+	\item[Filters:] filters or filter set used by the instrument. Specify all available filters or bands if applicable.
+	\item[Configuration:] optical or mechanical configuration of the instrument. 
+\end{description}
+
+\insertFigure[0.6]{admin/add-instrument-3}{Instrument additional data.}
 
 Correctly registering instruments ensures that observing blocks and targets are properly associated with the hardware used, which is essential for data management and planning of observations.
 
 
 \subsection{Observing Runs}
 
-Observing runs represent the periods of scheduled observations conducted at a given observatory with specific telescopes and instruments. Each observing run entry includes its name, the associated observatory, the telescope used, the start and end dates, and optional notes.
+Observing runs represent the periods of scheduled observations conducted at a given observatory with specific telescopes and instruments. 
 
-\insertFigure{admin/add-run1}{Observing run information.}
-\insertFigure{admin/add-run2}{Observing run participants.}
+To register a new observing run, click \textsl{Add Observing Run} and provide the required information in the following fields:
+
+\newpage
+
+\begin{description}
+	\item[Name:] name of the observing run.
+\end{description}
+
+\insertFigure[0.5]{admin/add-observing-run-1}{Observing run name.}
+
+\underline{General Information}
+
+\begin{description}
+	\item[Description:] description of the observing run.
+	\item[Instrument:] instrument used during the observing run.
+	\item[Start Date:] start date of the observing run.
+	\item[End Date:] planned end date of the observing run.
+\end{description}
+
+\insertFigure[1.0]{admin/add-observing-run-2}{Observing run general information.}
+
+\newpage
+
+\underline{Participants}
+
+\begin{description}
+	\item[Researchers:] researchers participating in the observing run.
+\end{description}
+
+\insertFigure[1.0]{admin/add-observing-run-3}{Observing run participants.}
+
+\underline{Additional Data}
+
+\begin{description}
+	\item[Comments:] any additional information concerning the observing run.
+\end{description}
+
+\insertFigure[0.8]{admin/add-observing-run-4}{Observing run additional data.}
 
 Properly registering observing runs is crucial for organizing observing blocks, associating data files, and maintaining accurate records of the observations carried out.
 
 
-
 \subsection{Observing Blocks}
 
-Observing blocks are subdivisions of an observing run that define specific targets, instruments, and observation parameters for a given session. Each block includes a name, the observing run it belongs to, assigned targets, instruments, and any relevant notes.
+Observing blocks are subdivisions of an observing run that define specific targets, instruments, and observation parameters for a given session. 
 
-\insertFigure{admin/add-block1}{Observing block information.}
-\insertFigure{admin/add-block2}{Observing block targets.}
+To register a new observing block, click \textsl{Add Observing Block} and provide the required information in the following fields: 
+
+\newpage
+
+\begin{description}
+	\item[Name:] name of the observing block.
+\end{description}
+
+\insertFigure[0.5]{admin/add-observing-block-1}{Observing block name.}
+
+\underline{General Information}
+
+\begin{description}
+	\item[Observing run:] observing run where the block is executed.
+	\item[Description:] description of the block.
+	\item[Observing semester:] semester in which the block was executed.
+	\item[Start Time:] start date and time of the block.
+	\item[End Time:] planned end time of the block.
+\end{description}
+
+\insertFigure[0.8]{admin/add-observing-block-2}{Observing block general information.}
+
+\underline{Observation Information}
+
+\begin{description}
+	\item[Observation mode:] observation mode used during the observing block (\textsl{Photometry}, \textsl{Spectroscopy}, or \textsl{Imaging}).
+	\item[Instrument filter:] instrument filter used during the observations.
+	\item[Instrument configuration:] instrument configuration used during the observations.
+	\item[Exposure Time:] exposure time per observation, expressed in seconds.
+	\item[Seeing:] seeing value during the observations, expressed in arcseconds.
+	\item[Weather Conditions:] weather conditions during the observing block.
+	\item[Target:] targets observed in the block.
+\end{description}
+
+\insertFigure[1.0]{admin/add-observing-block-3}{Observing block observation information.}
+
+\underline{Additional Data}
+
+\begin{description}
+	\item[Comments:] any additional information concerning the observing block.
+\end{description}
+
+\insertFigure[0.7]{admin/add-observing-block-4}{Observing block additional data.}
 
 Proper configuration of observing blocks ensures that data files are correctly associated with their targets and runs, and that access permissions can be assigned effectively to researchers and groups.
 
 \subsection{Targets}
 
-Targets are the astronomical objects of study in the project. Each target has associated coordinates (right ascension and declination), apparent magnitude, redshift, angular size, visibility semester, and links to observing runs, instruments, and data files.
+Targets are the astronomical objects of study in the project. 
 
-\insertFigure{admin/add-target}{Target information.}
+Creating a new \textsl{target} is a two-step process. First, click \textsl{Add Target} and provide the required information in the following fields:
+
+\begin{description}
+	\item[Name:] name of the target (must be unique).
+\end{description}
+
+\insertFigure[0.5]{admin/add-target-1}{Target name.}
+
+\underline{General Information}
+
+\begin{description}
+	\item[Type:]target type (\textsl{Galaxy}, \textsl{Calibration}, or \textsl{Other}).
+	\item[Right Ascension:] right ascension of the target, expressed in hours, minutes, and seconds (may include decimal values).
+	\item[Declination:] declination of the target, expressed in degrees, arcminutes, and arcseconds (may include decimal values), with positive values for northern and negative for southern declinations.
+	\item[Magnitude:] apparent magnitude of the object, referenced to Vega System. 
+	\item[Redshift:] redshift of the object with error.
+	\item[Size:] apparent angular size of the object, given in arcseconds.
+\end{description}
+
+\insertFigure[0.65]{admin/add-target-2}{Target general information.}
+
+\underline{Additional Data}
+
+\begin{description}
+	\item[Visibility semester:] semester in which the target is visible.
+	\item[Comments:] any additional information concerning the target.
+\end{description}
+
+\insertFigure[0.8]{admin/add-target-3}{Target additional data.}
+
+After saving, you will be redirected to the target details page. Here, fill in the following fields: 
+
+\underline{Upload Files}
+
+\begin{description}
+	\item[Image:] image file for the target. Clicking the \texttt{Select File} button opens a file browser window to choose the image from your computer.
+	\item[Data files:] target data files. Clicking the \texttt{Select Files} button opens a file browser window to select one or multiple files to upload.
+\end{description}
+
+\insertFigure[0.65]{admin/add-target-4}{Target files upload.}
+
+\underline{Delete Files}
+
+\begin{description}
+	\item[Delete image:] Check this box to remove the currently associated image file from the target.
+	\item[Delete files:] Select one or more entries from the list to delete the corresponding data files.
+\end{description}
+
+\insertFigure[1.0]{admin/add-target-5}{Target files deletion.}
 
 Correct configuration of targets allows for accurate organization of observations, data management, and control of user access permissions for each object.
 
@@ -129,6 +345,19 @@ Correct configuration of targets allows for accurate organization of observation
 % ------------------------------------------------------------------------------------------------------------------------------
 \section{Authentication and Authorization}
 % ------------------------------------------------------------------------------------------------------------------------------
+
+The platform defines different permissions to manage access to its features and data. 
+
+The \admin has full access to all platform functions, including user and group management, database maintenance, and content editing.
+
+The remaining researchers can have one of two roles:
+
+\begin{itemize}
+	\item \textbf{Core Team:} full access to all targets and observing blocks.
+	\item \textbf{Collaborator:} restricted to the targets and observing blocks assigned to their group; any blocks explicitly denied remain inaccessible.
+\end{itemize}
+
+\insertFigure[0.4]{admin/user-profile}{Users profiles and roles.}
 
 \subsection{User/Researcher Management}
 
@@ -149,17 +378,23 @@ First, \textsl{add user} or \textsl{add researcher} from the corresponding categ
 
 In this initial form, you must enter the username for the new account and set a password. The password can be typed manually twice for confirmation, or it can be generated automatically by the system. If generated, the password will be displayed so that you can share it with the new user by email.
 
-\insertFigure{admin/add-user}{Creating a new user.}
+\insertFigure{admin/add-user-1}{Creating a new user.}
+
+\newpage
 
 \underline{\textsl{Add user information}}
 
-After saving, you will be redirected to the user details page. In this second step, you can complete the personal information fields (first name, last name, and email), assign staff status if needed, and manage groups and permissions to control access to targets, blocks, and administrative features. To allow the user to access the platform, the \texttt{Staff status} option must be checked.
+After saving, you will be redirected to the user details page. In this second step, you can complete the personal information fields (first name, last name, and email).
 
-\insertFigure{admin/user-permissions}{User permissions.}
+\insertFigure[0.60]{admin/add-user-2}{User personal information.}
+
+Also, you can assign staff status if needed, and manage groups and permissions to control access to targets, blocks, and administrative features. To allow the user to access the platform, the \texttt{Staff status} option must be checked.
+
+\insertFigure{admin/add-user-3}{User permissions.}
 
 This page also displays additional information automatically managed by the system, such as the dates when the user account was created (\texttt{Date joined}) and the last time the user logged in (\texttt{Last login}).
 
-\insertFigure[0.60]{admin/user-dates}{User dates.}
+\insertFigure[0.5]{admin/add-user-4}{User dates.}
 
 \underline{\textsl{Add researcher information}}
 
@@ -167,12 +402,19 @@ Finally, the researcher information can be added either directly from the user p
 
 In this form, you can complete all fields related to the researcher’s role, PhD status, and permissions for observing blocks. This ensures that the account is fully linked to its corresponding researcher profile and that all relevant access rights are properly assigned. 
 
-Use the Role field to assign \textsl{Core Team} or \textsl{Collaborator} status. Core Team members have full access to all targets and observing blocks, while Collaborators are restricted to the targets and blocks assigned to their group. The \textsl{Denied blocks} field specifies which observing blocks the researcher does not have permission to access.
+You can access to the corresponding user account by clicking on the username link, allowing you to view or edit the account information directly.
 
-\insertFigure[0.60]{admin/researcher-role}{Researcher information.}
+Use the Role field to assign \textsl{Core Team} or \textsl{Collaborator} status. Core Team members have full access to all targets and observing blocks, while Collaborators are restricted to the targets and blocks assigned to their group. 
 
-From the researcher form, you can also access the corresponding user account by clicking on the username link, allowing you to view or edit the account information directly.
+\insertFigure[0.4]{admin/add-researcher-1}{Researcher role.}
 
+In the \textsl{General Information} section you can indicate whether the researcher is a PhD, the institutional affiliation of the researcher and any additional informational about the researcher.
+
+\insertFigure[0.80]{admin/add-researcher-2}{Researcher general information.}
+
+The \textsl{Authorization} section shows the \textsl{Denied blocks} field, to select which observing blocks the researcher does not have permission to access.
+
+\insertFigure[1.0]{admin/add-researcher-3}{Researcher Authorization.}
 
 \subsubsection{Deleting a user/researcher}
 
@@ -180,6 +422,7 @@ When a user account is deleted, the login credentials are removed, but the resea
 
 \warning Conversely, if a researcher record is deleted, both the researcher and the linked user account are permanently removed.
 
+\warning The \admin account cannot be deleted for security reasons.
 
 \subsection{Groups Management}
 
@@ -187,11 +430,11 @@ Groups are used to organize users according to their roles and responsibilities 
 
 Creating a new \textsl{group} is a two-step process. First, \textsl{add group} and enter the group name. After saving, you will be redirected to the group details page. 
 
-\insertFigure[0.70]{admin/add-group}{Group information.}
+\insertFigure[0.60]{admin/add-group-1}{Group name.}
 
-In a second step, the Authorization section appears, where you can assign the group access to specific observing blocks. This specifies which observing blocks the users in the group are allowed to access or modify.
+In a second step, the \textsl{Authorization} section appears, where you can assign the group access to specific observing blocks. This specifies which observing blocks the users in the group are allowed to access or modify.
 
-\insertFigure{admin/add-group-blocks}{Group allowed blocks.}
+\insertFigure[1.0]{admin/add-group-2}{Group allowed blocks.}
 
 Users can then be assigned to the group when creating or editing their accounts.
 

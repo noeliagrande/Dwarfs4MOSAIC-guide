@@ -7,23 +7,38 @@
 
 For general instructions on logging in and accessing the platform, the \admin should refer to \docref{Chapter}{chap:user-access} in \userpart.
 
-After logging in, the platform header displays a welcome message along with several navigation options:
+% --------------------------------------------------------------------------------------------------------------------------
+\chapter{Administrator Options} \label{chap:admin-options}
+
+After logging in, you will be directed to the \textsl{Home} page, which displays a welcome message along with several navigation options, providing quick access to the features most relevant to daily tasks.
+
+\vspace{0.5cm}
+
+\insertFigure[0.6]{admin-toolbar}{Navigation links for the \admin.}
 
 \begin{itemize}
    	\item \textbf{Home}: redirects to the main page (see \docref{Chapter}{chap:admin-homepage}).
+   	\item \textbf{Info}: access to platform information (see \docref{Chapter}{chap:admin-platform-info}).
    	\item \textbf{Database}: access to consult database tables (see \docref{Chapter}{chap:admin-database}).
-   	\item \textbf{Admin}: administration interface to manage users, permissions, and tables (see \docref{Chapter}{chap:admin-panel}).
+   	\item \textbf{Admin}: access to administration interface to manage users, permissions, and tables (see \docref{Chapter}{chap:admin-panel}).
    	\item \textbf{Log out}: option to manually log out of the platform (see \docref{Chapter}{chap:admin-logout}).
 \end{itemize}
-
-\insertFigure[0.6]{admin/menu-admin-home}{Navigation links for the \admin.}
-    
 
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Navigating the Home Page} \label{chap:admin-homepage}
 
-For an overview of Home page navigation and target access, the \admin should refer to \docref{Chapter}{chap:user-homepage} in \userpart.
+For an overview of \textsl{Home} page navigation and target access, the \admin should refer to \docref{Chapter}{chap:user-homepage} in \userpart.
 
+% --------------------------------------------------------------------------------------------------------------------------
+\chapter{Platform Information} \label{chap:admin-platform-info} 
+
+This view provides relevant information about the platform and allows editing the page content. Next to the page title, there is an \blue{\texttt{Edit}} link that scrolls to the editable section at the bottom of the page. This section contains an HTML editor widget where the \admin can modify the page content directly using HTML.
+
+\insertFigure[1.0]{admin-platform-info}{Platform information view.}
+
+After making changes, the \texttt{Save changes} button stores the updated HTML on the server, and the page is immediately refreshed to display the new content. This feature ensures that the \admin can update platform information efficiently while maintaining accuracy.
+
+\warning Changes made here will be immediately visible to all users. Ensure correctness before saving.
 
 
 % --------------------------------------------------------------------------------------------------------------------------
@@ -39,12 +54,11 @@ For an overview of Home page navigation and target access, the \admin should ref
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Logging Out} \label{chap:admin-logout}
 
-The \admin user should refer to \docref{Chapter}{chap:user-logout} in \userpart for general instructions for guidance on logging out.
- 
+For instructions on logging out, the \admin should refer to \docref{Chapter}{chap:user-logout} in \userpart. 
 
 
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Support} \label{chap:admin-support}
 
-For any support-related issues, the \admin user should refer to \docref{Chapter}{chap:user-support} in \userpart, which provides guidance for contacting the project coordinator and requesting assistance.
+For support-related issues, the \admin should refer to \docref{Chapter}{chap:user-support} in \userpart.
 

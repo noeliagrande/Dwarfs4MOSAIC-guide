@@ -1,9 +1,22 @@
 
 \chapter{Database Visualization} \label{chap:admin-database}
 
-This section introduces the interface for browsing the project’s database tables. It allows the \admin to explore the stored records, consult details quickly, and verify relationships between different objects. The feature ensures that the database content remains consistent with the project’s current state.
+This section introduces the interface for browsing the project’s database tables. 
 
-\insertFigure[0.9]{database/database-overview}{Database tables interface.}
+The diagram below shows the structure of the \textsl{dwarfs4MOSAIC} database, including the tables and the relationships between them. This overview helps understand how objects are interconnected.
+
+%\insertFigure[0.5]{database/database}{Database structure and relationships between tables.}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{img/database/database}
+	\caption{Database structure and relationships between tables.}
+	\label{fig:database}
+\end{figure}
+
+
+The platform allows the \admin to explore the stored records, consult details quickly, and verify relationships between different objects. The feature ensures that the database content remains consistent with the project’s current state.
+
+\insertFigure[0.8]{database/overview}{Database tables interface.}
 
 The list of categories appears in alphabetical order; however, in the following sections, they are presented according to the order in which they are created, making it easier to understand the relationships between objects.
 
@@ -13,7 +26,7 @@ The \textsl{group} table contains information about the project groups used to o
 
 Each record represents a single group and shows its name, members (researchers) and authorized observing blocks for the researchers belonging to the group.
 
-\insertFigure[0.55]{database/groups}{\textsl{Groups} table.}
+\insertFigure[0.45]{database/groups}{\textsl{Groups} table.}
 
 \section{Researchers}
 
@@ -21,7 +34,7 @@ The \textsl{researcher} table contains information about the project members.
 
 Each record represents a single researcher and shows its full name, role (\textsl{Core Team} or \textsl{Collaborator}), the group it belongs to, whether it holds a PhD, affiliated institution, the observing runs it has participated in, specific denied observation blocks, email address and comments.
 
-\insertFigure{database/researchers}{\textsl{Researchers} table.}
+\insertFigure[0.95]{database/researchers}{\textsl{Researchers} table.}
 
 \section{Observatories}
 
@@ -29,31 +42,31 @@ The \textsl{observatory} table contains information about the observatories asso
 
 Each record represents a single observatory and shows its name, location, geographic longitude, geographic latitude, altitude above sea level and a link to a website with additional information. 
 
-\insertFigure[0.9]{database/database-observatories}{\textsl{Observatories} table.}
+\insertFigure[0.9]{database/observatories}{\textsl{Observatories} table.}
 
 Clicking on an observatory name in the list a detailed page opens displaying all telescopes related to that observatory.
 
-\insertFigure{database/database-observatory}{Specific observatory information.}
+\insertFigure{database/observatory}{Specific observatory information.}
 
 \section{Telescopes}
 
 The \textsl{telescope} table contains information about the telescopes associated with each observatory. 
 
-Each record represents a single telescope and shows its name, description, observatory to which it belongs, institutional owner, operational status (Unknown, Operational, Inoperative, or Under Maintenance), aperture and a link to a website with additional information. 
+Each record represents a single telescope and shows its name, description, observatory to which it belongs, institutional owner, operational status (\textsl{Unknown}, \textsl{Operational}, \textsl{Inoperative}, or \textsl{Under Maintenance}), aperture and a link to a website with additional information. 
 
-\insertFigure{database/database-telescopes}{\textsl{Telescopes} table.}
+\insertFigure{database/telescopes}{\textsl{Telescopes} table.}
 
 Clicking on a telescope name in the list a detailed page opens showing all instruments related to that telescope.
 
-\insertFigure[0.7]{database/database-telescope}{Specific telescope information.}
+\insertFigure[0.85]{database/telescope}{Specific telescope information.}
 
 \section{Instruments}
 
 The \textsl{instrument} table contains information about the instruments available for each telescope. 
 
-Each record represents a single instrument and shows its name, description, telescope on which it is installed, operational status (Unknown, Operational, Inoperative, or Under Maintenance) and a link to a website with additional information. 
+Each record represents a single instrument and shows its name, description, filters, configuration, telescope on which it is installed, operational status (\textsl{Unknown}, \textsl{Operational}, \textsl{Inoperative}, or \textsl{Under Maintenance}) and a link to a website with additional information. 
 
-\insertFigure[0.90]{database/database-instruments}{\textsl{Instruments} table.}
+\insertFigure[0.90]{database/instruments}{\textsl{Instruments} table.}
 
 
 \section{Observing Runs}
@@ -72,18 +85,16 @@ Clicking on an observing run name in the list a detailed page opens showing all 
 
 The \textsl{observing\_block} table contains information about the specific set of scheduled observations for each observing run. 
 
-Each record represents a single observing block and shows its name, observation run to which it belongs, description, start date and time, end time, observed objects (targets), observation mode (Photometry, Spectroscopy, or Imaging), filters, exposure time of the observation, seeing value, weather conditions,  and comments.
+Each record represents a single observing block and shows its name, observation run to which it belongs, description, observing semester, start date and time, end time, observed objects (targets), observation mode (\textsl{Photometry}, \textsl{Spectroscopy}, or \textsl{Imaging}), filters, configuration, exposure time of the observation, seeing value, weather conditions, and comments.
 
 \insertFigure{database/blocks}{\textsl{Observing Blocks} table.}
 
-%\red{By clicking on the name of an observing block in the list view, you can access a detailed page displaying its configuration, associated targets, and permissions.}
 
 \section{Targets}
 
 The \textsl{target} table contains information about the observable astronomical objects. 
 
 Each record represents a single target and shows its image (if available), name, observing blocks where it has been observed, type (\textsl{Galaxy}, \textsl{Calibration}, or \textsl{Other}), right ascension, declination, apparent magnitude, redshift, angular size, visibility semester, comments, and path to store associated files.
-
 
 \insertFigure{database/targets}{\textsl{Targets} table.}
 

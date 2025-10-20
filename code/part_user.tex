@@ -5,20 +5,38 @@
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Accessing the Platform} \label{chap:user-access}
 
-To start using \app, open your preferred web browser and navigate to the project URL, \url{http://halmax.fis.ucm.es/}. It is recommended to use modern browsers such as \textsl{Chrome}, \textsl{Firefox}, or \textsl{Edge} for optimal compatibility with all platform features. Once the page loads, you will reach the welcome page. 
+To start using \app, open your preferred web browser and navigate to the project URL, \prjUrl. It is recommended to use modern browsers such as \textsl{Chrome}, \textsl{Firefox}, or \textsl{Edge} for optimal compatibility with all platform features. Once the page loads, you will reach the welcome page. 
+
+\vspace{0.5cm}
 
 \insertFigure[0.8]{welcome}{Dwarfs4MOSAIC welcome page.}
 
-Click the \texttt{LOGIN} option at the top-right corner of the page to access the login form and enter your assigned username and password in the corresponding fields. If you forget your password or experience login issues, please contact to \prjUrl to request a new password.
+Click the \texttt{LOGIN} option at the top-right corner of the page to access the login form and enter your assigned username and password in the corresponding fields. 
 
+\insertFigure[0.40]{login}{Login form.}
 
-\insertFigure[0.5]{login}{Login form.}
+If you forget your password or experience login issues, please contact \textsl{\prjContact} at \prjGuaix to request a new password.
+
+% --------------------------------------------------------------------------------------------------------------------------
+\chapter{User Options} \label{chap:user-options}
+
+After logging in, you will be directed to the \textsl{Home} page, which displays a welcome message along with several navigation options, providing quick access to the features most relevant to daily tasks.
+
+\vspace{0.5cm}
+
+\insertFigure[0.4]{user-toolbar}{Navigation links for a generic user.}
+
+\begin{itemize}
+	\item \textbf{Home}: redirects to the main page (see \docref{Chapter}{chap:admin-homepage}).
+	\item \textbf{Info}: access to platform information (see \docref{Chapter}{chap:user-platform-info}).
+	\item \textbf{Log out}: option to manually log out of the platform (see \docref{Chapter}{chap:admin-logout}).
+\end{itemize}
 
 
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Navigating the Home Page} \label{chap:user-homepage}
 
-After logging in, you will be directed to the \textsl{Home} page, which shows a welcome message with your name and displays a table with the targets you have permission to view.
+The \textsl{Home} page shows a table with the targets you have permission to view.
 
 %, depending on your user rol: \textsl{Core Team} members have full access to all entries, while \textsl{Collaborators} can only view the targets and blocks assigned to their group, with any restricted or denied blocks and associated data files remaining hidden.
 
@@ -26,25 +44,24 @@ After logging in, you will be directed to the \textsl{Home} page, which shows a 
 
 Each target is displayed with several fields that provide key information at a glance:
 
-\begin{itemize}
-	\item \textbf{Image}: target's associated image, if available.
-	\item \textbf{Name}: unique identifier of the target.
-	\item \textbf{Type}: category of the astronomical object.
-	\item \textbf{Right Ascension}: celestial coordinate along the equatorial plane [hh:mm:ss].
-	\item \textbf{Declination}: celestial coordinate perpendicular to the equatorial plane [dd:mm:ss].
-	\item \textbf{Apparent Magnitude}: brightness of the target as observed from Earth.
-	\item \textbf{Redshift (z)}: measured redshift of the object.
-	\item \textbf{Angular Size}: apparent size of the target in the sky.
-	\item \textbf{Visibility Semester}: observing semester when the target is visible.
-	\item \textbf{Observing Run}: name of the observing run(s) the target belongs to.
-	\item \textbf{Instrument}: instrument used to acquire data for the target.
-	\item \textbf{Data Files}: list of associated files available for download.
-	\item \textbf{Comments}: additional information.
-\end{itemize}
+\begin{description}
+	\item[Image:] target's associated image, if available.
+	\item[Name:] unique identifier of the target.
+	\item[Type:] category of the astronomical object.
+	\item[Right Ascension:] celestial coordinate along the equatorial plane [hh:mm:ss].
+	\item[Declination:] celestial coordinate perpendicular to the equatorial plane [dd:mm:ss].
+	\item[Apparent Magnitude:] brightness of the target as observed from Earth.
+	\item[Redshift (z):] measured redshift of the object.
+	\item[Angular Size:] apparent size of the target in the sky.
+	\item[Visibility Semester:] semester when the target is visible.
+	\item[Observing Run:] name of the observing run(s) the target belongs to.
+	\item[Instrument:] instrument used to acquire data for the target.
+	\item[Data Files:] list of associated files available for download (see \docref{Chapter}{chap:user-download-files}).
+	\item[Comments:] additional information.
+\end{description}
 
 % You can sort the table or use the search box to quickly find a target. (TO DO)
 
-\newpage
 
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Downloading Files} \label{chap:user-download-files} 
@@ -53,25 +70,31 @@ On the \textsl{Home} page, locate the target of interest. In the \texttt{Data Fi
 
 \insertFigure[0.6]{download}{File download view.}
 
-In this view, a table lists all files associated with the selected target. You can select one, multiple, or all files at once. If only a single file is selected, it will be downloaded directly. If multiple files are selected, a .zip archive containing all selected files is generated. The download process is handled directly by your web browser.
+This view displays a table containing all the files associated with the selected target and their respective sizes. You can select one, multiple, or all files at once. If only a single file is selected, it will be downloaded directly. If multiple files are selected, a \textsl{.zip} archive containing all selected files is generated. The download process is handled directly by your web browser.
 
+% --------------------------------------------------------------------------------------------------------------------------
+\chapter{Platform Information} \label{chap:user-platform-info} 
+
+This view provides relevant information about the platform. All information is kept up-to-date by the \admin to ensure accuracy.
+
+\insertFigure[1.0]{user-platform-info}{Platform information view.}
 
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Logging Out} \label{chap:user-logout}
 
 To securely exit the platform, click the \texttt{LOG OUT} option located at the top-right corner of the page. This will end your session and return you to the welcome page. Your session will also automatically expire after 15 minutes of inactivity, requiring you to log in again. This helps protect your account on shared computers.
 
-Always log out when you finish using the system, especially on shared or public computers, to protect your account and data.
+\warning Always log out when you finish using the system, especially on shared or public computers, to protect your account and data.
 
 
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Support} \label{chap:user-support}
 
-For any questions, technical issues, or to request a new password, please contact please contact to \prjUrl. 
+For any questions, technical issues, or to request a new password, please contact \textsl{\prjContact} at \prjGuaix. 
 
 Response times may vary, and users are encouraged to provide a clear description of the issue. 
 
-Always keep your login credentials secure and do not share them with others.
+\warning Always keep your login credentials secure and do not share them with others.
 
 
 
