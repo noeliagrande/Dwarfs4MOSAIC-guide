@@ -1,72 +1,14 @@
 
-\input{preamble.tex}
+% ======================================================================
+% dwarfs4mosaic_Quick_Start_Guide.tex
+%
+% This file generates the User and Admin version of the Quick Start Guide.
+% It sets the role variable to "both" and then conditionally shows content 
+% based on this role.
+%
+% To compile:
+%     pdflatex dwarfs4mosaic_Quick_Start_Guide.tex
+% ======================================================================
 
-% ------------
-% Project info
-
-\newcommand{\project}{\textsf{Dwarfs4MOSAIC}\xspace}
-\newcommand{\prjInstitution}{Universidad Complutense de Madrid\xspace}
-\newcommand{\prjAuthor}{Noelia Grande Zafrilla\xspace}
-\newcommand{\prjPubDate}{October, 2025\xspace} % \newcommand{\prjPubDate}{\today}
-\newcommand{\prjVersion}{1.1\xspace}
-\newcommand{\prjContact}{Principal Investigator of Dwarfs4MOSAIC\xspace}
-%\newcommand{\prjMail}{j.gallego@ucm.es\xspace}
-\newcommand{\prjGuaix}{\url{https://guaix.ucm.es/dwarfs4mosaic}\xspace}
-\newcommand{\prjUrl}{\url{https://guaix.ucm.es/dwarfs4mosaic-data}\xspace}
-
-
-\begin{document}
-	
-	\pagestyle{empty}   % for preliminary pages
-	
-	% Cover
-	\input{cover.tex}
-	
-	% Extra space between paragraphs, no indentation (here so it doesn't affect the cover)
-	\setlength{\parskip}{1em}    % space between paragraphs
-	\setlength{\parindent}{0pt}  % removes paragraph indentation
-	
-	\section*{About this guide}
-	
-	\begin{flushleft}
-		\begin{tabular}{ll}
-			\textbf{Institution:} & \prjInstitution \\
-			\textbf{Author:} & \prjAuthor \\
-			\textbf{Publication date:} & \prjPubDate \\
-			\textbf{Version:} & \prjVersion \\
-			\textbf{Contact:} & \prjContact \\
-			\                 & \prjGuaix \\
-			%& Email: \href{mailto:\prjMail}{\prjMail}
-		\end{tabular}
-	\end{flushleft}
-	
-	\vspace{2cm}
-	
-	\section*{Intended Audience}
-	
-	\hyperref[part:user]{Part~\ref*{part:user}} of the guide is designed for researchers and users without administrative privileges. It explains how to navigate and use the \app platform as a non-administrative user, providing step-by-step instructions.
-	
-	\hyperref[part:admin]{Part~\ref*{part:admin}} is intended for the \admin user, with administrative privileges, and describes exclusively the platform’s administrative functionalities, with step-by-step guidance.
-	 
-	\newpage
-	
-    % Index
-    \setlength{\parskip}{0.3em}
-    \tableofcontents
-    \setlength{\parskip}{0.8em}
-    
-    \thispagestyle{empty} 	% removes page number (does not reset counter)
-    \clearpage              % forces a page break
-    \setcounter{page}{1}    % resets the visible page number
-    \pagestyle{plain}       % sets normal page style
-    
-    \newpage
-    
-    % Researcher's guide
-    \include{part_user}
-    
-    % Administrator's guide
-    \include{part_admin}
-   
-
-\end{document}
+\newcommand{\role}{both}
+\input{guide.tex}

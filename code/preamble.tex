@@ -26,8 +26,9 @@
 \usepackage{caption}
 \usepackage{chngcntr}
 \usepackage{xspace}
-\usepackage{hyperref}           % Must be loaded last
 \usepackage{fontawesome5}
+\usepackage{ifthen}
+\usepackage{hyperref}           % Must be loaded last
 
 %\usepackage{indentfirst}
 
@@ -41,6 +42,13 @@
 \newcommand{\userpart}{\textsl{\hyperref[part:user]{Part~\ref*{part:user}. User's Guide}} \xspace}
 
 \newcommand{\correcciones}[1]{\red{CORRECCIONES \textdownarrow} #1 \red{CORRECCIONES \textuparrow}}
+
+% \rolecontent{<role>}{<admin text>}{<user text>}{<default text>}
+\newcommand{\rolecontent}[4]{
+	\ifthenelse{\equal{#1}{admin}}{#2}{
+		\ifthenelse{\equal{#1}{user}}{#3}{#4}
+	}
+}
 
 % ----------------------------------------------------------------------------------------------------------------------
 % Customize sections
@@ -92,8 +100,6 @@
 %\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
 %\makeatother
 
-
-
 % Appendices
 \makeatletter
 \newcommand{\appendixtitleformat}{
@@ -138,12 +144,17 @@
 \captionsetup{
 	font=footnotesize,        % Caption font size
 	labelfont={bf},           % Make name + number bold
-	labelsep=period,          % Separator "Fig. 1." instead of ":"
-	figurename=Fig            % Name of figures
+	labelsep=period,          % Separator "Fig. 1." instead of "Fig. 1:"
+	%figurename=Fig.            % Name of figures
 }
 
-% Number figures by Part, starting at 1 in each Part
-\renewcommand{\thefigure}{\thepart.\arabic{figure}}
+\rolecontent{\role}
+{} % admin - do nothing
+{} % user - do nothing
+{% both
+	% Number figures by Part, starting at 1 in each Part
+	\renewcommand{\thefigure}{\thepart.\arabic{figure}}
+}
 
 \usepackage{etoolbox}  % for \pretocmd
 \pretocmd{\part}{\setcounter{figure}{0}}{}{}
@@ -183,41 +194,3 @@
 	\end{figure}
 }
 
-
-
-\begin{comment}
-	
-	\usepackage{amsmath, amssymb} 	% Mathematical symbols
-	
-	\usepackage{multirow}
-	\usepackage{array}
-	
-	\usepackage{tcolorbox}
-	
-	\usepackage{xparse}
-	\usepackage{ifthen}
-	\tcbuselibrary{breakable} % Load library to allow page breaks
-	\usepackage{cancel}
-	\usepackage[table]{xcolor} % Load xcolor with table option
-	
-	% ----------------------------------------------------------------------------------------------------------------------
-	% Customize tables
-	
-	\renewcommand{\arraystretch}{1.5}  % Increase row height
-	
-
-	
-	\newcommand{\red}[1]{\textcolor{red}{#1}}
-	
-	\newcommand{\bolddarkred}[1]{\textbf{\darkred{#1}}}
-	\newcommand{\bolddarkgreen}[1]{\textbf{\darkgreen{#1}}}
-	\newcommand{\boldblue}[1]{\textbf{\blue{#1}}}
-	
-	\definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
-	\newcommand{\darkblue}[1]{\textcolor{darkblue}{#1}}
-	\newcommand{\bolddarkblue}[1]{\textbf{\darkblue{#1}}}
-	
-	\definecolor{lavender}{rgb}{0.9, 0.8, 1.0}
-	\definecolor{lightlavender}{rgb}{0.96, 0.92, 1.0}
-	
-\end{comment}

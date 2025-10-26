@@ -1,0 +1,41 @@
+ 
+% --------------------------------------------------------------------------------------------------------------------------
+% \chapter{Navigating the Home Page}
+
+The \textsl{Home} page shows a table with the targets you have permission to view.
+
+%, depending on your user rol: \textsl{Core Team} members have full access to all entries, while \textsl{Collaborators} can only view the targets and blocks assigned to their group, with any restricted or denied blocks and associated data files remaining hidden.
+
+\insertFigure{homepage}{Home page.}
+
+Each target is displayed with several fields that provide key information at a glance:
+
+\begin{description}
+	\item[Image:] target's associated image, if available.
+	\item[Name:] unique identifier of the target.
+	\item[Type:] category of the astronomical object.
+	\item[Right Ascension:] celestial coordinate along the equatorial plane [hh:mm:ss].
+	\item[Declination:] celestial coordinate perpendicular to the equatorial plane [dd:mm:ss].
+	\item[Apparent Magnitude:] brightness of the target as observed from Earth.
+	\item[Redshift (z):] measured redshift of the object.
+	\item[Angular Size:] apparent size of the target in the sky.
+	\item[Visibility Semester:] semester when the target is visible.
+	\item[Observing Run:] name of the observing run(s) the target belongs to.
+	\item[Instrument:] instrument used to acquire data for the target.
+	\item[Data Files:] 
+		\rolecontent{\role}
+		{% admin
+			list of associated files available for download (see \docref{Chapter}{chap:admin-download-files}).
+		}
+		{% user
+			list of associated files available for download (see \docref{Chapter}{chap:user-download-files}).
+		}
+		{% both
+			list of associated files available for download (see \docref{Chapter}{chap:user-download-files}).
+		}
+	\item[Comments:] additional information.
+\end{description}
+
+% You can sort the table or use the search box to quickly find a target. (TO DO)
+
+

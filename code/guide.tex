@@ -1,0 +1,113 @@
+
+% ======================================================================
+% guide.tex
+%
+% Main LaTeX file for the Dwarfs4MOSAIC Quick Start Guide.
+%
+% This file compiles different versions of the guide depending on the user role:
+%   - Admin version: administrative functionalities included.
+%   - User version: non-administrative functionalities only.
+%   - Both: includes both admin and user parts.
+%
+% The role is defined by the \role command:
+%   \newcommand{\role}{admin}   -> admin version
+%   \newcommand{\role}{user}    -> user version
+%   \newcommand{\role}{both}    -> combined version
+%
+% The guide is structured as follows:
+%   - cover.tex         : cover page content
+%   - part_user.tex     : content for regular users (researchers)
+%   - part_admin.tex    : content for administrators
+%
+% Notes:
+%   - \rolecontent{<role>}{<admin>}{<user>}{<both>} is used to select
+%     content depending on the role.
+% ======================================================================
+
+\input{preamble.tex}
+
+\providecommand{\role}{both}
+
+
+% Project info
+% ------------
+\newcommand{\project}{\textsf{Dwarfs4MOSAIC}\xspace}
+\newcommand{\prjInstitution}{Universidad Complutense de Madrid\xspace}
+\newcommand{\prjAuthor}{Noelia Grande Zafrilla\xspace}
+\newcommand{\prjPubDate}{October, 2025\xspace} % \newcommand{\prjPubDate}{\today}
+\newcommand{\prjVersion}{1.1\xspace}
+\newcommand{\prjContact}{Principal Investigator of Dwarfs4MOSAIC\xspace}
+%\newcommand{\prjMail}{j.gallego@ucm.es\xspace}
+\newcommand{\prjGuaix}{\url{https://guaix.ucm.es/dwarfs4mosaic}\xspace}
+\newcommand{\prjUrl}{\url{https://guaix.ucm.es/dwarfs4mosaic-data}\xspace}
+
+
+\begin{document}
+	
+	\pagestyle{empty}   % for preliminary pages
+	
+	% Cover
+	\input{cover.tex}
+	
+	% Extra space between paragraphs, no indentation (here so it doesn't affect the cover)
+	\setlength{\parskip}{1em}    % space between paragraphs
+	\setlength{\parindent}{0pt}  % removes paragraph indentation
+	
+	\section*{About this guide}
+	
+	\begin{flushleft}
+		\begin{tabular}{ll}
+			\textbf{Institution:} & \prjInstitution \\
+			\textbf{Author:} & \prjAuthor \\
+			\textbf{Publication date:} & \prjPubDate \\
+			\textbf{Version:} & \prjVersion \\
+			\textbf{Contact:} & \prjContact \\
+			\                 & \prjGuaix \\
+			%& Email: \href{mailto:\prjMail}{\prjMail}
+		\end{tabular}
+	\end{flushleft}
+	
+	\vspace{2cm}
+	
+	\section*{Intended Audience}
+	
+	\rolecontent{\role}
+	{% admin
+		This guide is intended for the \admin user with administrative privileges. It explains how to navigate the \app platform and manage its administrative features, with step-by-step instructions.
+	}	
+	{% user
+		This guide is designed for researchers and users without administrative privileges. It explains how to navigate and use the \app platform as a non-administrative user, providing step-by-step instructions.
+	}	
+	{% both
+		\hyperref[part:user]{Part~\ref*{part:user}} of the guide is designed for researchers and users without administrative privileges. It explains how to navigate and use the \app platform as a non-administrative user, providing step-by-step instructions.
+		
+		\hyperref[part:admin]{Part~\ref*{part:admin}} is intended for the \admin user, with administrative privileges, and describes exclusively the platform’s administrative functionalities, with step-by-step guidance.
+	}
+	
+	\newpage
+	
+    % Index
+    \setlength{\parskip}{0.3em}
+    \tableofcontents
+    \setlength{\parskip}{0.8em}
+    
+    \thispagestyle{empty} 	% removes page number (does not reset counter)
+    \clearpage              % forces a page break
+    \setcounter{page}{1}    % resets the visible page number
+    \pagestyle{plain}       % sets normal page style
+    
+    \newpage
+    
+    \rolecontent{\role}
+    {% admin
+    	\include{part_admin} % Administrator's guide
+    }
+    {% user
+    	\include{part_user} % Researcher's guide
+    }
+    {% both
+    	\include{part_user}   
+    	\include{part_admin}
+    }
+    
+\end{document}

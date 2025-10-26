@@ -1,11 +1,22 @@
 
-\part{\textsl{Administrator's} Guide} \label{part:admin}
+% If role=both
+\rolecontent{\role}{}{}{
+	\part{\textsl{Administrator's} Guide} \label{part:admin}
+}
 
-  
+
 % --------------------------------------------------------------------------------------------------------------------------
-\chapter{Accessing the Platform}
+\chapter{Accessing the Platform} \label{chap:admin-access}
 
-For general instructions on logging in and accessing the platform, the \admin should refer to \docref{Chapter}{chap:user-access} in \userpart.
+\rolecontent{\role}
+{% admin
+	\input{accessing_platform}
+}
+{} % user - do nothing
+{% both
+	For general instructions on logging in and accessing the platform, the \admin should refer to \docref{Chapter}{chap:user-access} in \userpart.
+}
+
 
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Administrator Options} \label{chap:admin-options}
@@ -17,22 +28,44 @@ After logging in, you will be directed to the \textsl{Home} page, which displays
 \insertFigure[0.6]{admin-toolbar}{Navigation links for the \admin.}
 
 \begin{itemize}
-   	\item \textbf{Home}: redirects to the main page (see \docref{Chapter}{chap:admin-homepage}).
-   	\item \textbf{Info}: access to platform information (see \docref{Chapter}{chap:admin-platform-info}).
-   	\item \textbf{Database}: access to consult database tables (see \docref{Chapter}{chap:admin-database}).
-   	\item \textbf{Admin}: access to administration interface to manage users, permissions, and tables (see \docref{Chapter}{chap:admin-panel}).
-   	\item \textbf{Log out}: option to manually log out of the platform (see \docref{Chapter}{chap:admin-logout}).
+	\item \textbf{Home}: redirects to the main page (see \docref{Chapter}{chap:admin-homepage}).
+	\item \textbf{Info}: access to platform information (see \docref{Chapter}{chap:admin-platform-info}).
+	\item \textbf{Database}: access to consult database tables (see \docref{Chapter}{chap:admin-database}).
+	\item \textbf{Admin}: access to administration interface to manage users, permissions, and tables (see \docref{Chapter}{chap:admin-panel}).
+	\item \textbf{Log out}: option to manually log out of the platform (see \docref{Chapter}{chap:admin-logout}).
 \end{itemize}
+  
 
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Navigating the Home Page} \label{chap:admin-homepage}
 
-For an overview of \textsl{Home} page navigation and target access, the \admin should refer to \docref{Chapter}{chap:user-homepage} in \userpart.
+\rolecontent{\role}
+{% admin
+	\input{home_page}
+}
+{} % user - do nothing
+{% both
+	For an overview of \textsl{Home} page navigation and target access, the \admin should refer to \docref{Chapter}{chap:user-homepage} in \userpart.
+}
+
+
+% --------------------------------------------------------------------------------------------------------------------------
+\chapter{Downloading Files} \label{chap:admin-download-files} 
+
+\rolecontent{\role}
+{% admin
+	\input{download_files}
+}
+{} % user - do nothing
+{% both
+	For general instructions on downloading files, the \admin should refer to \docref{Chapter}{chap:user-download-files} in \userpart.
+}
+
 
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Platform Information} \label{chap:admin-platform-info} 
 
-This view provides relevant information about the platform and allows editing the page content. Next to the page title, there is an \blue{\texttt{Edit}} link that scrolls to the editable section at the bottom of the page. This section contains an HTML editor widget where the \admin can modify the page content directly using HTML.
+This view provides relevant information about the platform and allows editing the page content. Next to the page title, there is a link (\texttt{Edit}) that scrolls to the editable section at the bottom of the page. This section contains an HTML editor widget where the \admin can modify the page content directly using HTML.
 
 \insertFigure[1.0]{admin-platform-info}{Platform information view.}
 
@@ -42,23 +75,39 @@ After making changes, the \texttt{Save changes} button stores the updated HTML o
 
 
 % --------------------------------------------------------------------------------------------------------------------------
-% \chapter{Database Visualization}
+\chapter{Database Visualization} \label{chap:admin-database}
 \input{database}
 
 
 % --------------------------------------------------------------------------------------------------------------------------
-% \chapter{Administration Panel}
+\chapter{Administration Panel} \label{chap:admin-panel}
 \input{admin_panel}
+
 
 
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Logging Out} \label{chap:admin-logout}
 
-For instructions on logging out, the \admin should refer to \docref{Chapter}{chap:user-logout} in \userpart. 
+\rolecontent{\role}
+{% admin
+	\input{logout}
+}
+{} % user - do nothing
+{% both
+	For instructions on logging out, the \admin should refer to \docref{Chapter}{chap:user-logout} in \userpart. 
+}
 
 
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Support} \label{chap:admin-support}
 
-For support-related issues, the \admin should refer to \docref{Chapter}{chap:user-support} in \userpart.
+\rolecontent{\role}
+{% admin
+	\input{support}
+}
+{} % user - do nothing
+{% both
+	For support-related issues, the \admin should refer to \docref{Chapter}{chap:user-support} in \userpart.
+}
+
 
