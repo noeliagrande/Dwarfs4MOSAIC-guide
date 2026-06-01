@@ -24,21 +24,23 @@ The administration panel is organized into two main sections.
 \textbf{Authentication and Authorization} section contains the \textsl{Groups} and \textsl{Users} categories, to manage user accounts, assign users to groups, and configure permissions.
 	
 \insertFigure[0.8]{admin/overview-authentication}{Authentication and Authorization administration.}
-	
-\newpage
 
-\textbf{Database} section defines a category for each table of the \textsl{dwarfs4MOSAIC} platform, allowing to view, add, modify, or delete records as required.
+\textbf{Database} section defines a category for each table of the \textsl{dwarfs4MOSAIC} platform, allowing to manage records as required.
 	
 \insertFigure[0.75]{admin/overview-database}{Database administration.}
 	
 
-When selecting a category in the administration panel, a list of existing objects of that type is displayed, allowing you to view, edit, or delete them as needed.
+When selecting a category in the administration panel, a list of existing objects of that type is displayed, allowing you to view, filter, edit, or delete them as needed.
 
-\insertFigure[0.50]{admin/list-instruments}{List of instruments.}
+\insertFigure{admin/list-instruments}{List of instruments.}
 
-%\section{Adding, Editing, and Deleting Objects}
 
 All categories in the administration panel have the same basic actions.
+
+% CSV import functionality temporarily disabled.
+% The explanation is preserved for potential future reactivation.
+
+\begin{comment}
 
 \subsection*{Importing a set of objects}
 
@@ -51,6 +53,19 @@ Clicking this button opens a dedicated view to import objects of the selected ca
 \insertFigure[0.80]{admin/import-csv}{Import CSV view.}
 
 \warning The CSV is imported as-is, without any data validation. Object IDs in the CSV are not preserved; the platform automatically assigns new IDs upon import. After importing, you must manually update the objects to establish their relationships with other tables, and upload any associated files separately.
+\end{comment}
+
+
+\subsection*{Filtering objects}
+
+The administration panel provides filtering tools to facilitate the search and management of objects within each category.
+
+When selecting a category, a filter sidebar is displayed on the right-hand side of the list view. This panel allows users to narrow down the displayed results based on one or more field values specific to the selected model.
+
+Filters are applied dynamically, updating the list of objects without modifying the database. Multiple filters can be combined to refine the search further and quickly locate specific entries.
+
+\insertFigure{admin/filter-objects.jpg}{Filter objects.}
+
 
 \subsection*{Adding an object}
 
@@ -92,13 +107,12 @@ Observatories represent the locations where telescopes and instruments are insta
 
 To register a new observatory, click \textsl{Add Observatory} and provide the required information in the following fields:
 
-\newpage
-
 \begin{description}
 	\item[Name:] name of the observatory.
 \end{description}
 
 \insertFigure[0.5]{admin/add-observatory-1}{Observatory name.}
+
 
 \underline{General Information}
 
@@ -121,11 +135,15 @@ To register a new observatory, click \textsl{Add Observatory} and provide the re
 
 Maintaining accurate observatory data is essential, as telescopes and observing blocks are linked to these locations, and the relationships are used throughout the platform to manage observations efficiently.
 
+
+
 \subsection{Telescopes}
 
 Telescopes are the instruments installed at observatories to carry out astronomical observations. 
 
 To register a new telescope, click \textsl{Add Telescope} and provide the required information in the following fields:
+
+\newpage
 
 \begin{description}
 	\item[Name:] name of the telescope.
@@ -144,6 +162,7 @@ To register a new telescope, click \textsl{Add Telescope} and provide the requir
 \end{description}
 
 \insertFigure[0.8]{admin/add-telescope-2}{Telescope general information.}
+
 
 \underline{Characteristics}
 
@@ -178,6 +197,8 @@ To register a new instrument, click \textsl{Add Instrument} and provide the requ
 
 \insertFigure[0.9]{admin/add-instrument-2}{Instrument general information.}
 
+\newpage
+
 \underline{Additional Data}
 
 \begin{description}
@@ -196,13 +217,13 @@ Observing runs represent the periods of scheduled observations conducted at a gi
 
 To register a new observing run, click \textsl{Add Observing Run} and provide the required information in the following fields:
 
-\newpage
-
 \begin{description}
 	\item[Name:] name of the observing run.
 \end{description}
 
 \insertFigure[0.5]{admin/add-observing-run-1}{Observing run name.}
+
+\newpage
 
 \underline{General Information}
 
@@ -215,7 +236,6 @@ To register a new observing run, click \textsl{Add Observing Run} and provide th
 
 \insertFigure[1.0]{admin/add-observing-run-2}{Observing run general information.}
 
-\newpage
 
 \underline{Participants}
 
@@ -241,8 +261,6 @@ Properly registering observing runs is crucial for organizing observing blocks, 
 Observing blocks are subdivisions of an observing run that define specific targets, instruments, and observation parameters for a given session. 
 
 To register a new observing block, click \textsl{Add Observing Block} and provide the required information in the following fields: 
-
-\newpage
 
 \begin{description}
 	\item[Name:] name of the observing block.
@@ -311,6 +329,8 @@ Creating a new \textsl{target} is a two-step process. First, click \textsl{Add T
 \end{description}
 
 \insertFigure[0.70]{admin/add-target-2}{Target general information.}
+
+\newpage
 
 \underline{Additional Data}
 
