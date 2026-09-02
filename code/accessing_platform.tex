@@ -10,7 +10,16 @@ To start using \app, open your preferred web browser and navigate to the project
 
 Click the \texttt{LOGIN} option at the top-right corner of the page to access the login form and enter your assigned username and password in the corresponding fields. 
 
-\insertFigure[0.40]{login}{Login form.}
+\rolecontent{\role}
+{% admin
+	\insertFigure[0.40]{login-admin}{Login form.} % Administrator's
+}
+{% user
+	\insertFigure[0.40]{login-researcher}{Login form.} % Researcher's
+}
+{% both
+	\insertFigure[0.40]{login-researcher}{Login form.}
+}
 
 If you forget your password or experience login issues, please contact \textsl{\prjContact} at \prjGuaix to request a new password.
 

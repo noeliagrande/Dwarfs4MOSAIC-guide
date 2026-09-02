@@ -21,15 +21,16 @@
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Administrator Options} \label{chap:admin-options}
 
-After logging in, you will be directed to the \textsl{Home} page, which displays a welcome message along with several navigation options, providing quick access to the features most relevant to daily tasks.
+After logging in, you will be directed to the \textsl{Home} page, which displays a welcome message along with several navigation options, and provides quick access to the main platform features..
 
 \vspace{0.5cm}
 
-\insertFigure[0.6]{admin-toolbar}{Navigation links for the \admin.}
+\insertFigure[0.6]{toolbar-admin}{Navigation links for the \admin.}
 
 \begin{itemize}
 	\item \textbf{Home}: redirects to the main page (see \docref{Chapter}{chap:admin-homepage}).
 	\item \textbf{Info}: access to platform information (see \docref{Chapter}{chap:admin-platform-info}).
+	\item \textbf{Science}: access to science information (see \docref{Chapter}{chap:admin-science}).
 	\item \textbf{Database}: access to consult database tables (see \docref{Chapter}{chap:admin-database}).
 	\item \textbf{Admin}: access to administration interface to manage users, permissions, and tables (see \docref{Chapter}{chap:admin-panel}).
 	\item \textbf{Log out}: option to manually log out of the platform (see \docref{Chapter}{chap:admin-logout}).
@@ -65,13 +66,35 @@ After logging in, you will be directed to the \textsl{Home} page, which displays
 % --------------------------------------------------------------------------------------------------------------------------
 \chapter{Platform Information} \label{chap:admin-platform-info} 
 
-This view provides relevant information about the platform and allows editing the page content. Next to the page title, there is a link (\texttt{Edit}) that scrolls to the editable section at the bottom of the page. This section contains an HTML editor widget where the \admin can modify the page content directly using HTML.
+This view provides relevant information about the platform. The page content is displayed in a dedicated section below the page title.
 
-\insertFigure[1.0]{admin-platform-info}{Platform information view.}
+\insertFigure[1.0]{platform-info-admin}{Platform information view.}
 
-After making changes, the \texttt{Save changes} button stores the updated HTML on the server, and the page is immediately refreshed to display the new content. This feature ensures that the \admin can update platform information efficiently while maintaining accuracy.
+The edit icon {\scriptsize \grayblue{\faEdit{}}}, available next to the page title, opens the editing mode. In this mode, the page is divided into two columns: the left column displays a live preview of the page content, while the right column contains an HTML editor where the \admin can modify the content directly using HTML.
+
+\insertFigure[1.0]{platform-info-edit}{Platform information editing view.}
+
+As the HTML content is modified, the preview is updated automatically, allowing the \admin to check the appearance of the page before saving the changes. The \texttt{Save} button stores the updated HTML on the server, while the \texttt{Cancel} button discards the changes and returns to the normal view.
 
 \warning Changes made here will be immediately visible to all users. Ensure correctness before saving.
+
+
+
+% --------------------------------------------------------------------------------------------------------------------------
+\chapter{Science} \label{chap:admin-science} 
+
+This view provides scientific background related to the content of the platform. The page content is displayed in a dedicated section below the page title.
+
+\insertFigure[1.0]{science-admin}{Science view.}
+
+The edit icon {\scriptsize \grayblue{\faEdit{}}}, available next to the page title, opens the editing mode. In this mode, the page is divided into two columns: the left column displays a live preview of the page content, while the right column contains an HTML editor where the \admin can modify the content directly using HTML.
+
+\insertFigure[1.0]{science-edit}{Science editing view.}
+
+As the HTML content is modified, the preview is updated automatically, allowing the \admin to check the appearance of the page before saving the changes. The \texttt{Save} button stores the updated HTML on the server, while the \texttt{Cancel} button discards the changes and returns to the normal view.
+
+\warning Changes made here will be immediately visible to all users. Ensure correctness before saving.
+
 
 
 % --------------------------------------------------------------------------------------------------------------------------
